@@ -1,6 +1,7 @@
 package es.unex.giis.asee.fulltank;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 
@@ -14,12 +15,21 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Date;
+import java.util.List;
+
 import es.unex.giis.asee.fulltank.databinding.ActivityMainBinding;
+import es.unex.giis.asee.fulltank.elembd.HistorialRepostaje;
+import es.unex.giis.asee.fulltank.elembd.Usuario;
+import es.unex.giis.asee.fulltank.roomdb.Api_BD;
+import es.unex.giis.asee.fulltank.roomdb.BD;
+import es.unex.giis.asee.fulltank.roomdb.PruebasBD;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +39,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
+        binding.appBarMain.fab.setOnClickListener(view -> {
+            /*Snackbar.make(view, "Pon aqui tu funcionalidad", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show()*/
+            AppExecutors.getInstance().diskIO().execute(() -> {
+
+                //PruebasBD p = new PruebasBD(MainActivity.this);
+                //p.ejecutarPruebas();
+
+                runOnUiThread(() -> Snackbar.make(view, "Pon aqui tu funcionalidad", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show());
+            });
         });
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each

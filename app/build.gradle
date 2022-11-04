@@ -32,6 +32,13 @@ android {
 }
 
 dependencies {
+    
+    //AppCompat
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+
+    // Room
+    implementation "androidx.room:room-runtime:$roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$roomVersion"
 
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
