@@ -7,6 +7,6 @@ plugins {
 ext {
     appCompatVersion = '1.2.0'
 
-    roomVersion = '2.2.5'
+    roomVersion = '2.4.3'
     lifecycleVersion = '2.2.0'
 }

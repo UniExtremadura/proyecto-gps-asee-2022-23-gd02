@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show()*/
             AppExecutors.getInstance().diskIO().execute(() -> {
 
-                //PruebasBD p = new PruebasBD(MainActivity.this);
-                //p.ejecutarPruebas();
+                PruebasBD p = new PruebasBD(MainActivity.this);
+                p.ejecutarPruebas();
 
                 runOnUiThread(() -> Snackbar.make(view, "Pon aqui tu funcionalidad", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show());
