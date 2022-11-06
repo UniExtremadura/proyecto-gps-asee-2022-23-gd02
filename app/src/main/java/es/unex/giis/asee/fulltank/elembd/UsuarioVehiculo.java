@@ -5,15 +5,16 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "tabla_usuario_vehiculo", primaryKeys = {"uid", "vehiculoId"})
+@Entity(tableName = "tabla_usuario_vehiculo", primaryKeys = {"uid", "vehiculoId"}, foreignKeys = {
+        @ForeignKey(entity = Usuario.class, parentColumns = "uid", childColumns = "uid"),
+        @ForeignKey(entity = Vehiculo.class, parentColumns = "vehiculoId", childColumns = "vehiculoId")
+})
 public class UsuarioVehiculo {
 
     @ColumnInfo(name = "uid")
-    @ForeignKey(entity = Usuario.class, parentColumns = "uid", childColumns = "uid")
     private int uid;
 
     @ColumnInfo(name = "vehiculoId")
-    @ForeignKey(entity = Vehiculo.class, parentColumns = "vehiculoId", childColumns = "vehiculoId")
     private int vehiculoId;
 
     public UsuarioVehiculo(int uid, int vehiculoId) {

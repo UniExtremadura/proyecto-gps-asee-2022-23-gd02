@@ -9,7 +9,7 @@ import androidx.room.TypeConverters;
 
 import java.util.Date;
 
-@Entity(tableName = "tabla_usuario")
+@Entity(tableName = "tabla_usuario", foreignKeys = @ForeignKey(entity = Vehiculo.class, parentColumns = "vehiculoId", childColumns = "vehiculoId"))
 public class Usuario {
 
     @PrimaryKey
@@ -25,7 +25,7 @@ public class Usuario {
     private String password;
     @ColumnInfo(name = "puntos", defaultValue = "0")
     private int puntos;
-    @ForeignKey(entity = Vehiculo.class, parentColumns = "vehiculoId", childColumns = "vehiculoId")
+    @ColumnInfo(name = "vehiculoId")
     private String vehiculoId;
 
     public Usuario(int uid, String nombre, String apellido1, String apellido2, String password, String vehiculoId, int puntos) {

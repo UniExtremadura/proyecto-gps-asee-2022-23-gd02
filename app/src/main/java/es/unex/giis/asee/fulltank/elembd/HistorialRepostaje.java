@@ -13,16 +13,19 @@ import java.util.Locale;
 
 import es.unex.giis.asee.fulltank.roomdb.DateConverter;
 
-@Entity(tableName = "tabla_historial_repostaje")
+@Entity(tableName = "tabla_historial_repostaje", foreignKeys = {
+        @ForeignKey(entity = Vehiculo.class, parentColumns = "vehiculoId", childColumns = "vehiculoId"),
+        @ForeignKey(entity = Gasolinera.class, parentColumns = "gasoId", childColumns = "gasoId")
+})
 public class HistorialRepostaje {
     @PrimaryKey
     @TypeConverters(DateConverter.class)
     private Date fecha;
     @ColumnInfo(name = "litros")
     private int litros;  //Litros de gasolina repostados
-    @ForeignKey(entity = Vehiculo.class, parentColumns = "vehiculoId", childColumns = "vehiculoId")
+    @ColumnInfo(name = "vehiculoId")
     private int vehiculoId;
-    @ForeignKey(entity = Gasolinera.class, parentColumns = "gasoId", childColumns = "gasoId")
+    @ColumnInfo(name = "gasoId")
     private int gasoId;
 
     @Ignore
