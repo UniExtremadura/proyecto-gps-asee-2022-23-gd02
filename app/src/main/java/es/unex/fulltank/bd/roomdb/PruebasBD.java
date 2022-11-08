@@ -38,6 +38,6 @@ public class PruebasBD {
         // TODO Crear un Tag como propiedad de la clase que, usando introspección, guarde el nombre de la clase
         //Log.d(Tag, "Mensaje");
         pruebaUsuario();
-        pruebaHistorial();
+        //pruebaHistorial();
     }
 }
