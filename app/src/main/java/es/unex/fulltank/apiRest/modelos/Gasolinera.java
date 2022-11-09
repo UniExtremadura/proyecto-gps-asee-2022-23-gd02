@@ -1,7 +1,12 @@
 package es.unex.fulltank.apiRest.modelos;
 
 import com.google.gson.annotations.SerializedName;
-//Clase que define la estructura de un objeto Gasolinera
+
+/**
+ * Clase que define la estructura de un objeto Gasolinera
+ * @author Grupo PGD02
+ * @version 1.0
+ */
 public class Gasolinera{
 
     @SerializedName("C.P.")

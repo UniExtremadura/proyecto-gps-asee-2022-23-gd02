@@ -3,7 +3,13 @@ package es.unex.fulltank.apiRest.modelos;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
-//Clase que define la estructura de un objeto RespuestaApi
+
+/**
+ * Clase que define la estructura de un objeto RespuestaApi
+ * @author Grupo PGD02
+ * @version 1.0
+ */
+
 public class RespuestaAPI {
     //Se utiliza la anotación SerializedName que indica que este miembro debe serializarse
     // en JSON con el valor de nombre proporcionado como su nombre de campo.
