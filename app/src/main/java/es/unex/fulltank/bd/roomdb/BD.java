@@ -12,10 +12,20 @@ import es.unex.fulltank.bd.elembd.HistorialRepostaje;
 import es.unex.fulltank.bd.elembd.Usuario;
 import es.unex.fulltank.bd.elembd.Vehiculo;
 
+/**
+ * La base de datos implementa un patrón singleton.
+ *
+ */
 @Database(entities = {Gasolinera.class, HistorialRepostaje.class, Usuario.class, Vehiculo.class, UsuarioVehiculo.class}, version = 1)
 public abstract class BD extends RoomDatabase {
     private static BD instance;
 
+    /**
+     * La instancia de la BD se devolverá en caso de que esté creada, en caso contrario, se creará
+     * y se devolverá
+     * @param context El contexto donde se debe construir la Base de datos
+     * @return La instancia de la BD.
+     */
     public static BD getInstance(Context context) {
         if(instance == null){
             instance = Room.databaseBuilder(context, BD.class, "baseDeDatos.db")
@@ -27,6 +37,7 @@ public abstract class BD extends RoomDatabase {
         return instance;
     }
 
+    /*Los siguientes métodos devuelven los DAO correspondientes a cada tabla de la BD.*/
     public abstract UsuarioDao getUsuarioDao();
     public abstract VehiculoDao getVehiculoDao();
     public abstract HistorialRepostajeDao getHistorialRepostajeDao();

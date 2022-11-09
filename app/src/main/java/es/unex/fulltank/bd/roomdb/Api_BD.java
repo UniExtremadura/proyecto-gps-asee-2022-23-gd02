@@ -5,16 +5,20 @@ import android.util.Log;
 
 import java.util.Date;
 
+import es.unex.fulltank.bd.elembd.Gasolinera;
 import es.unex.fulltank.bd.elembd.HistorialRepostaje;
 import es.unex.fulltank.bd.elembd.Usuario;
+import es.unex.fulltank.bd.elembd.Vehiculo;
 
 /**
  * En esta clase se definen todas esas operaciones que queramos que nuestra BD haga
+ * @author Grupo PGD02
+ * @version 1.0
  */
 public class Api_BD{ //TODO Clase en pruebas NO USAR
 
     /**
-     * Antes de insertar un usuario, se comprubeba si no está ya insertado
+     * Inserta un usuario en la BD.
      * @param usuario
      * @param context
      */
@@ -28,16 +32,11 @@ public class Api_BD{ //TODO Clase en pruebas NO USAR
         }
     }
 
-    public static Usuario getById(int uid, Context context) {
-        UsuarioDao uDao = BD.getInstance(context).getUsuarioDao();
-        return uDao.getById(uid);
-    }
-
-    public static HistorialRepostaje getByDate (Date date, Context context) {
-        HistorialRepostajeDao hDao = BD.getInstance(context).getHistorialRepostajeDao();
-        return hDao.getByTimestamp(DateConverter.toTimestamp(date));
-    }
-
+    /**
+     * Inserta un HistorialRepostaje en la BD.
+     * @param h Elemento de HistorialRepostaje a insertar
+     * @param context
+     */
     public static void insert(HistorialRepostaje h, Context context){
         HistorialRepostajeDao hDao = BD.getInstance(context).getHistorialRepostajeDao();
         if(hDao.getByTimestamp(DateConverter.toTimestamp(h.getFecha())) == null) {
@@ -46,5 +45,57 @@ public class Api_BD{ //TODO Clase en pruebas NO USAR
         } else {
             Log.e("Api_BD", "No se puede insertar un historial que ya está en la BD");
         }
+    }
+
+    /**
+     * Inserta un vehiculo en la BD.
+     * @param vehiculo
+     * @param context
+     */
+    public static void insert(Vehiculo vehiculo, Context context) {
+        VehiculoDao vDao = BD.getInstance(context).getVehiculoDao();
+        if (vDao.getById(vehiculo.getVehiculoId()) == null) {
+            Log.d("Api_BD", "Antes de la insercion, el id del vehiculo es: " + vehiculo.getVehiculoId());
+            vDao.insert(vehiculo);
+        } else {
+            Log.e("Api_BD", "No se puede insertar un usuario que ya está en la BD");
+        }
+    }
+
+    /**
+     * Inserta una Gasolinera en la BD.
+     * @param gasolinera
+     * @param context
+     */
+    public static void insert(Gasolinera gasolinera, Context context) {
+        GasolineraDao gDao = BD.getInstance(context).getGasolineraDao();
+        if (gDao.getById(gasolinera.getGasoId()) == null) {
+            Log.d("Api_BD", "Antes de la insercion, el nombre de la gasolinera es: " + gasolinera.getNombre());
+            gDao.insert(gasolinera);
+        } else {
+            Log.e("Api_BD", "No se puede insertar un usuario que ya está en la BD");
+        }
+    }
+
+    /**
+     * Consulta un usuario en la BD por su uid.
+     * @param uid
+     * @param context
+     * @return
+     */
+    public static Usuario getByUid(int uid, Context context) {
+        UsuarioDao uDao = BD.getInstance(context).getUsuarioDao();
+        return uDao.getById(uid);
+    }
+
+    /**
+     * Consulta un HistorialRepostaje de la BD por su fecha.
+     * @param date
+     * @param context
+     * @return
+     */
+    public static HistorialRepostaje getHistoByDate (Date date, Context context) {
+        HistorialRepostajeDao hDao = BD.getInstance(context).getHistorialRepostajeDao();
+        return hDao.getByTimestamp(DateConverter.toTimestamp(date));
     }
 }

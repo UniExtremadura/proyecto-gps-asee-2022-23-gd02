@@ -25,10 +25,9 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 /**
- * Global executor pools for the whole application.
- * <p>
- * Grouping tasks like this avoids the effects of task starvation (e.g. disk reads don't wait behind
- * webservice requests).
+ * La idea de esta clase es abstraer el funcionamiento de los hilos en Java.
+ * @author Grupo PGD02.
+ * @version 1.0
  */
 public class AppExecutors {
 
@@ -39,12 +38,22 @@ public class AppExecutors {
     private final Executor mainThread;
     private final Executor networkIO;
 
+    /**
+     * Inicializa los hilos de disco que vienen dados por parámetro.
+     * @param diskIO
+     * @param networkIO
+     * @param mainThread
+     */
     private AppExecutors(Executor diskIO, Executor networkIO, Executor mainThread) {
         this.diskIO = diskIO;
         this.networkIO = networkIO;
         this.mainThread = mainThread;
     }
 
+    /**
+     * Esta clase implementa el patrón singleton
+     * @return la instancia de esta clase
+     */
     public static AppExecutors getInstance() {
         if (sInstance == null) {
             synchronized (LOCK) {
@@ -56,18 +65,30 @@ public class AppExecutors {
         return sInstance;
     }
 
+    /**
+     * @return El ejecutor de disco
+     */
     public Executor diskIO() {
         return diskIO;
     }
 
+    /**
+     * @return El hilo ejecutor principal.
+     */
     public Executor mainThread() {
         return mainThread;
     }
 
+    /**
+     * @return El ejecutor para operaciones relacionadas con datos en la nube.
+     */
     public Executor networkIO() {
         return networkIO;
     }
 
+    /**
+     * Esta es una clase auxiliar que implementa el metodo execute de los ejecutores.
+     */
     private static class MainThreadExecutor implements Executor {
         private Handler mainThreadHandler = new Handler(Looper.getMainLooper());
 

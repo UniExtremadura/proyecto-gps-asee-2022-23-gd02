@@ -5,6 +5,14 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+/**
+ * La clase Usuario representa todos los datos de un Usuario real.
+ * Es una clase implementada con anotaciones de Room. Se ha configurado de tal manera que cada atributo
+ * de esta clase se mapea a una columna de una tabla de la Base de datos de este proyecto,
+ * utilizando anotaciones.
+ * @author Grupo PGD02
+ * @version 1.0
+ */
 @Entity(tableName = "tabla_usuario", foreignKeys = @ForeignKey(entity = Vehiculo.class, parentColumns = "vehiculoId", childColumns = "vehiculoId"))
 public class Usuario {
 

@@ -4,6 +4,15 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ * La clase Gasolinera contiene los atributos relacionados con una gasolinera de la vida real,
+ * como el id y el nombre. Por ejemplo, la gasolinera Repsol, con ID = 3476.
+ * Es una clase implementada con anotaciones de Room. Se ha configurado de tal manera que cada atributo
+ * de esta clase se mapea a una columna de una tabla de gasolineras de la Base de datos de este
+ * proyecto, utilizando anotaciones.
+ * @author Grupo PGD02
+ * @version 1.0
+ */
 @Entity(tableName = "tabla_gasolinera")
 public class Gasolinera {
 

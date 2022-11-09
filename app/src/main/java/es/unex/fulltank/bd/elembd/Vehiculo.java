@@ -1,16 +1,27 @@
 package es.unex.fulltank.bd.elembd;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+/**
+ * La clase Usuario representa todos los datos de un Vehículo real como la matrícula,
+ * marca, el modelo y otros atributos que lo identifican.
+ * Es una clase implementada con anotaciones de Room. Se ha configurado de tal manera que cada atributo
+ * de esta clase se mapea a una columna de una tabla de la Base de datos de este proyecto,
+ * utilizando anotaciones.
+ * @author Grupo PGD02
+ * @version 1.0
+ */
 @Entity(tableName = "tabla_vehiculo")
 public class Vehiculo {
 
     @PrimaryKey
     @ColumnInfo(name = "vehiculoId")
-    private int vehiculoId;
+    @NonNull
+    private String vehiculoId;
     @ColumnInfo(name = "marca")
     private String marca;
     @ColumnInfo(name = "modelo")
@@ -20,7 +31,7 @@ public class Vehiculo {
     @ColumnInfo(name = "peso")
     private double peso;
 
-    public Vehiculo(int vehiculoId, String marca, String modelo, double consumo, double peso) {
+    public Vehiculo(String vehiculoId, String marca, String modelo, double consumo, double peso) {
         this.vehiculoId = vehiculoId;
         this.marca = marca;
         this.modelo = modelo;
@@ -28,11 +39,11 @@ public class Vehiculo {
         this.peso = peso;
     }
 
-    public int getVehiculoId() {
+    public String getVehiculoId() {
         return vehiculoId;
     }
 
-    public void setVehiculoId(int vehiculoId) {
+    public void setVehiculoId(String vehiculoId) {
         this.vehiculoId = vehiculoId;
     }
 

@@ -13,6 +13,16 @@ import java.util.Locale;
 
 import es.unex.fulltank.bd.roomdb.DateConverter;
 
+/**
+ * La idea de esta clase es representar un historial para registrar cada vez que se hace un repostaje
+ * en la aplicación. Se registran datos de la Gasolinera en la que se reposta, la fecha de repostaje,
+ * el Vehículo que hace el repostaje y otros campos.
+ * Es una clase implementada con anotaciones de Room. Se ha configurado de tal manera que cada atributo
+ * de esta clase se mapea a una columna de una tabla de la Base de datos de este proyecto,
+ * utilizando anotaciones.
+ * @author Grupo PGD02
+ * @version 1.0
+ */
 @Entity(tableName = "tabla_historial_repostaje", foreignKeys = {
         @ForeignKey(entity = Vehiculo.class, parentColumns = "vehiculoId", childColumns = "vehiculoId"),
         @ForeignKey(entity = Gasolinera.class, parentColumns = "gasoId", childColumns = "gasoId")
@@ -24,7 +34,7 @@ public class HistorialRepostaje {
     @ColumnInfo(name = "litros")
     private int litros;  //Litros de gasolina repostados
     @ColumnInfo(name = "vehiculoId")
-    private int vehiculoId;
+    private String vehiculoId;
     @ColumnInfo(name = "gasoId")
     private int gasoId;
 
@@ -32,7 +42,7 @@ public class HistorialRepostaje {
     public final static SimpleDateFormat FORMAT = new SimpleDateFormat(
             "yyyy-MM-dd HH:mm:ss", Locale.US);
 
-    public HistorialRepostaje(Date fecha, int litros, int vehiculoId, int gasoId) {
+    public HistorialRepostaje(Date fecha, int litros, String vehiculoId, int gasoId) {
         this.fecha = fecha;
         this.litros = litros;
         this.vehiculoId = vehiculoId;
@@ -55,11 +65,11 @@ public class HistorialRepostaje {
         this.litros = litros;
     }
 
-    public int getVehiculoId() {
+    public String getVehiculoId() {
         return vehiculoId;
     }
 
-    public void setVehiculoId(int vehiculoId) {
+    public void setVehiculoId(String vehiculoId) {
         this.vehiculoId = vehiculoId;
     }
 
