@@ -12,14 +12,38 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="es.unex.fulltank.bd.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_favoritos"
+        android:name="es.unex.fulltank.bd.ui.favoritos.FavoritosFragment"
+        android:label="@string/menu_favoritos"
+        tools:layout="@layout/fragment_favoritos" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="es.unex.fulltank.bd.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_ubicaciones"
+        android:name="es.unex.fulltank.bd.ui.ubicaciones.UbicacionesFragment"
+        android:label="@string/menu_ubicaciones"
+        tools:layout="@layout/fragment_ubicaciones" />
+
+    <fragment
+        android:id="@+id/nav_vehiculos"
+        android:name="es.unex.fulltank.bd.ui.vehiculos.VehiculosFragment"
+        android:label="@string/menu_vehiculos"
+        tools:layout="@layout/fragment_vehiculos" />
+
+    <fragment
+        android:id="@+id/nav_filtrarGasolineras"
+        android:name="es.unex.fulltank.bd.ui.filtrarGasolineras.FiltrarGasolinerasFragment"
+        android:label="@string/menu_filtrarGasolineras"
+        tools:layout="@layout/fragment_filtrar_gasolineras" />
+
+    <fragment
+        android:id="@+id/nav_historicoRepostaje"
+        android:name="es.unex.fulltank.bd.ui.historicoRepostaje.HistoricoRepostajeFragment"
+        android:label="@string/menu_historicoRepostaje"
+        tools:layout="@layout/fragment_historico_repostaje" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="es.unex.fulltank.bd.ui.settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

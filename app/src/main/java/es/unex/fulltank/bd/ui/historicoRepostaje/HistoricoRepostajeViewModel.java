@@ -1,16 +1,16 @@
-package es.unex.fulltank.bd.ui.slideshow;
+package es.unex.fulltank.bd.ui.historicoRepostaje;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
+public class HistoricoRepostajeViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public SlideshowViewModel() {
+    public HistoricoRepostajeViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("This is Historico de Repostaje fragment");
     }
 
     public LiveData<String> getText() {

@@ -1,4 +1,4 @@
-package es.unex.fulltank.bd.ui.slideshow;
+package es.unex.fulltank.bd.ui.settings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import es.unex.giis.asee.fulltank.databinding.FragmentSlideshowBinding;
+import es.unex.giis.asee.fulltank.databinding.FragmentFavoritosBinding;
 
-public class SlideshowFragment extends Fragment {
+public class SettingsFragment extends Fragment {
 
-    private FragmentSlideshowBinding binding;
+    private FragmentFavoritosBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SlideshowViewModel slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
+        SettingsViewModel favoritosViewModel =
+                new ViewModelProvider(this).get(SettingsViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentFavoritosBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSlideshow;
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textFavoritos;
+        favoritosViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

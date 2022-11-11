@@ -13,7 +13,7 @@ import androidx.room.PrimaryKey;
  * @author Grupo PGD02
  * @version 1.0
  */
-@Entity(tableName = "tabla_usuario", foreignKeys = @ForeignKey(entity = Vehiculo.class, parentColumns = "vehiculoId", childColumns = "vehiculoId"))
+@Entity(tableName = "tabla_usuario")
 public class Usuario {
 
     @PrimaryKey

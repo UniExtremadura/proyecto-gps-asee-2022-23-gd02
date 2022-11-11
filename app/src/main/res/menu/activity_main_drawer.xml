@@ -6,15 +6,36 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_menu_home"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_favoritos"
+            android:icon="@drawable/ic_menu_favoritos"
+            android:title="@string/menu_favoritos" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_ubicaciones"
+            android:icon="@drawable/ic_menu_ubicaciones"
+            android:title="@string/menu_ubicaciones" />
+        <item
+            android:id="@+id/nav_vehiculos"
+            android:icon="@drawable/ic_menu_vehiculos"
+            android:title="@string/menu_vehiculos" />
+        <item
+            android:id="@+id/nav_filtrarGasolineras"
+            android:icon="@drawable/ic_menu_filtrar_gasolineras"
+            android:title="@string/menu_filtrarGasolineras" />
+        <item
+            android:id="@+id/nav_historicoRepostaje"
+            android:icon="@drawable/ic_menu_historico_repostaje"
+            android:title="@string/menu_historicoRepostaje" />
     </group>
+
+    <item android:title="@string/menu_adicional">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_menu_settings"
+                android:title="@string/menu_settings" />
+        </menu>
+    </item>
 </menu>
