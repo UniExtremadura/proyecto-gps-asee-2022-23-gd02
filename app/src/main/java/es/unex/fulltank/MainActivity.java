@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(view -> {
-            /*Snackbar.make(view, "Pon aqui tu funcionalidad", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show()*/
+
+        //PRUEBAS DE LA BD COMENTADAS ----------------------------------------------
+        /*binding.appBarMain.fab.setOnClickListener(view -> {
             AppExecutors.getInstance().diskIO().execute(() -> {
 
                 PruebasBD p = new PruebasBD(MainActivity.this);
@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(() -> Snackbar.make(view, "Probando la BD", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show());
             });
-        });
+        });*/
+        // -------------------------------------------------------------------------
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
