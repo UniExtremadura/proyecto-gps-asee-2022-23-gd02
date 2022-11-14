@@ -16,7 +16,7 @@ import es.unex.fulltank.bd.elembd.Vehiculo;
  * La base de datos implementa un patrón singleton.
  *
  */
-@Database(entities = {Gasolinera.class, HistorialRepostaje.class, Usuario.class, Vehiculo.class, UsuarioVehiculo.class}, version = 1)
+@Database(entities = {Gasolinera.class, HistorialRepostaje.class, Usuario.class, Vehiculo.class, UsuarioVehiculo.class}, version = 2)
 public abstract class BD extends RoomDatabase {
     private static BD instance;
 

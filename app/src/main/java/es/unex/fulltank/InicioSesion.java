@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import es.unex.fulltank.bd.roomdb.PruebasBD;
+
 public class InicioSesion extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 28;
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 29;
@@ -20,6 +22,13 @@ public class InicioSesion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio_sesion);
+
+        //PRUEBAS DE LA BD ---------------------------------------------------------
+        AppExecutors.getInstance().diskIO().execute(() -> {
+            PruebasBD p = new PruebasBD(InicioSesion.this);
+            p.ejecutarPruebas();
+        });
+        // -------------------------------------------------------------------------
 
         getLocalizacion();
 

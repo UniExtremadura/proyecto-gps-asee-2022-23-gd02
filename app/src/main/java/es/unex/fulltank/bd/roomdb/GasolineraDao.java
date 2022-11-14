@@ -29,15 +29,8 @@ public interface GasolineraDao {
      * Devuelve una gasolinera dado su ID.
      * @return Una gasolinera con el ID que viene por parametro.
      */
-    @Query("SELECT * FROM tabla_gasolinera WHERE gasoId = :gasolinera")
-    Gasolinera getById(int gasolinera);
-
-    /**
-     * Devuelve una gasolinera dado su nombre
-     * @param nombre
-     */
-    @Query("SELECT * FROM tabla_gasolinera WHERE nombre = :nombre")
-    Gasolinera getByName(String nombre);
+    @Query("SELECT * FROM tabla_gasolinera WHERE latitud = :latitud AND longitud = :longitud")
+    Gasolinera getByCoords(String latitud, String longitud);
 
     /**
      * Inserta una gasolinera en la BD.

@@ -44,8 +44,8 @@ public class PruebasBD {
     public void pruebaHistorial(){
         Date d = new Date(50000);
         Vehiculo v1 = new Vehiculo("12BA", "Audi", "A3", 5.0, 1234.9);
-        Gasolinera g1 = new Gasolinera(1, "Respsol");
-        HistorialRepostaje h1 = new HistorialRepostaje(d, 12, "12BA", 1);
+        Gasolinera g1 = new Gasolinera("37.245", "24.789");
+        HistorialRepostaje h1 = new HistorialRepostaje(d, 12, "12BA", "37.245", "24.789");
         Api_BD.insert(v1, context);
         Api_BD.insert(g1, context);
         Api_BD.insert(h1, context);
@@ -58,7 +58,7 @@ public class PruebasBD {
     public void ejecutarPruebas(){
         // TODO Crear un Tag como propiedad de la clase que, usando introspección, guarde el nombre de la clase
         //Log.d(Tag, "Mensaje");
-        //pruebaUsuario();
+        pruebaUsuario();
         pruebaHistorial();
     }
 }

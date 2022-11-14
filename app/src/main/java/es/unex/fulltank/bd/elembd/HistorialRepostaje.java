@@ -25,7 +25,7 @@ import es.unex.fulltank.bd.roomdb.DateConverter;
  */
 @Entity(tableName = "tabla_historial_repostaje", foreignKeys = {
         @ForeignKey(entity = Vehiculo.class, parentColumns = "vehiculoId", childColumns = "vehiculoId"),
-        @ForeignKey(entity = Gasolinera.class, parentColumns = "gasoId", childColumns = "gasoId")
+        @ForeignKey(entity = Gasolinera.class, parentColumns = {"latitud", "longitud"}, childColumns = {"latitud", "longitud"})
 })
 public class HistorialRepostaje {
     @PrimaryKey
@@ -35,18 +35,22 @@ public class HistorialRepostaje {
     private int litros;  //Litros de gasolina repostados
     @ColumnInfo(name = "vehiculoId")
     private String vehiculoId;
-    @ColumnInfo(name = "gasoId")
-    private int gasoId;
+
+    //Identificadores de la gasolinera
+    private String latitud;
+    private String longitud;
+
 
     @Ignore
     public final static SimpleDateFormat FORMAT = new SimpleDateFormat(
             "yyyy-MM-dd HH:mm:ss", Locale.US);
 
-    public HistorialRepostaje(Date fecha, int litros, String vehiculoId, int gasoId) {
+    public HistorialRepostaje(Date fecha, int litros, String vehiculoId, String latitud, String longitud) {
         this.fecha = fecha;
         this.litros = litros;
         this.vehiculoId = vehiculoId;
-        this.gasoId = gasoId;
+        this.latitud = latitud;
+        this.longitud = longitud;
     }
 
     public Date getFecha() {
@@ -73,11 +77,19 @@ public class HistorialRepostaje {
         this.vehiculoId = vehiculoId;
     }
 
-    public int getGasoId() {
-        return gasoId;
+    public String getLatitud() {
+        return latitud;
     }
 
-    public void setGasoId(int gasoId) {
-        this.gasoId = gasoId;
+    public void setLatitud(String latitud) {
+        this.latitud = latitud;
+    }
+
+    public String getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(String longitud) {
+        this.longitud = longitud;
     }
 }

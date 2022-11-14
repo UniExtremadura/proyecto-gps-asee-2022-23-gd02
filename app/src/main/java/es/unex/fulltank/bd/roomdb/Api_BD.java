@@ -69,8 +69,8 @@ public class Api_BD{ //TODO Clase en pruebas NO USAR
      */
     public static void insert(Gasolinera gasolinera, Context context) {
         GasolineraDao gDao = BD.getInstance(context).getGasolineraDao();
-        if (gDao.getById(gasolinera.getGasoId()) == null) {
-            Log.d("Api_BD", "Antes de la insercion, el nombre de la gasolinera es: " + gasolinera.getNombre());
+        if (gDao.getByCoords(gasolinera.getLatitud(), gasolinera.getLongitud()) == null) {
+            Log.d("Api_BD", "Antes de la insercion, la direccion de la gasolinera es: " + gasolinera.getDireccion());
             gDao.insert(gasolinera);
         } else {
             Log.e("Api_BD", "No se puede insertar un usuario que ya está en la BD");

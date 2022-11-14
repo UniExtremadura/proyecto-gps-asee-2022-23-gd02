@@ -59,25 +59,7 @@ public class MainActivity extends AppCompatActivity  {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
-
         setSupportActionBar(binding.appBarMain.toolbar);
-
-
-
-
-        //PRUEBAS DE LA BD COMENTADAS ----------------------------------------------
-        /*binding.appBarMain.fab.setOnClickListener(view -> {
-            AppExecutors.getInstance().diskIO().execute(() -> {
-
-                PruebasBD p = new PruebasBD(MainActivity.this);
-                p.ejecutarPruebas();
-
-                runOnUiThread(() -> Snackbar.make(view, "Probando la BD", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show());
-            });
-        });*/
-        // -------------------------------------------------------------------------
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
