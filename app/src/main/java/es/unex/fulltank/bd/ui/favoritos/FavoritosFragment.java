@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import es.unex.giis.asee.fulltank.databinding.FragmentFavoritosBinding;
+import es.unex.fulltank.databinding.FragmentFavoritosBinding;
 
 public class FavoritosFragment extends Fragment {
 

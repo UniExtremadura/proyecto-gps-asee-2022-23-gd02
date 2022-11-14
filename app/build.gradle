@@ -1,13 +1,14 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
-    namespace 'es.unex.giis.asee.fulltank'
+    namespace 'es.unex.fulltank'
     compileSdk 32
 
     defaultConfig {
-        applicationId "es.unex.giis.asee.fulltank"
+        applicationId "es.unex.fulltank"
         minSdk 29
         targetSdk 32
         versionCode 1
@@ -43,6 +44,8 @@ dependencies {
     //API GOB CARBURANTES
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    //GOOGLE MAPS
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'

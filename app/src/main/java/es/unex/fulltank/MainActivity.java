@@ -1,8 +1,10 @@
 package es.unex.fulltank;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -13,24 +15,56 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import es.unex.giis.asee.fulltank.R;
-import es.unex.giis.asee.fulltank.databinding.ActivityMainBinding;
+
+import es.unex.fulltank.R;
+import es.unex.fulltank.databinding.ActivityMainBinding;
 import es.unex.fulltank.bd.roomdb.PruebasBD;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 
-public class MainActivity extends AppCompatActivity {
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Bundle;
 
-    private AppBarConfiguration mAppBarConfiguration;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+public class MainActivity extends AppCompatActivity  {
+
+
+    private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 28;
+    private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 29;
     private ActivityMainBinding binding;
 
+    private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+       // getLocalizacion();
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+
         setSupportActionBar(binding.appBarMain.toolbar);
+
+
+
 
         //PRUEBAS DE LA BD COMENTADAS ----------------------------------------------
         /*binding.appBarMain.fab.setOnClickListener(view -> {
@@ -71,5 +105,42 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void getLocalizacion() {
+        int permiso;
+
+        permiso= ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION); //Comprueba el permiso
+        if (permiso == PackageManager.PERMISSION_DENIED) { //Comprueba si no esta otorgado
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+        }
+
+        permiso = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);//SOLO NECESITA ESTE
+        if (permiso == PackageManager.PERMISSION_DENIED) { //Comprueba si no esta otorgado
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        switch (requestCode){
+            case MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION:
+                if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    Log.e("A28","kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                }else{
+                    Log.e("A28","PERMISO DENEGADO");
+                }
+                return;
+
+            case MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION:
+                if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    Log.e("A28","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                }else{
+                    Log.e("A28","PERMISO DENEGADO B");
+                }
+                return;
+        }
     }
 }

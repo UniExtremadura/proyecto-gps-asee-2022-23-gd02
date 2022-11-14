@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import es.unex.giis.asee.fulltank.databinding.FragmentVehiculosBinding;
+import es.unex.fulltank.databinding.FragmentVehiculosBinding;
 
 public class VehiculosFragment extends Fragment {
 
