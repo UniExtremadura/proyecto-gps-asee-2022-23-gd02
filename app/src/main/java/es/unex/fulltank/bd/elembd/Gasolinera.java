@@ -3,7 +3,6 @@ package es.unex.fulltank.bd.elembd;
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 
-import com.google.gson.annotations.SerializedName;
 
 /**
  * La clase Gasolinera contiene los atributos relacionados con una gasolinera de la vida real,
@@ -22,73 +21,41 @@ public class Gasolinera{
     }
 
 
-    @SerializedName("Latitud")
     @NonNull
     private String latitud;
 
-    @SerializedName("Longitud (WGS84)")
     @NonNull
     private String longitud;
 
-    @SerializedName("C.P.")
     private String CP;
-    @SerializedName("Dirección")
     private String direccion;
-    @SerializedName("Horario")
     private String horario;
-    @SerializedName("Localidad")
     private String localidad;
-    @SerializedName("Margen")
     private String margen;
-    @SerializedName("Municipio")
     private String municipio;
-    @SerializedName("Precio Biodiesel")
     private String precioBiodiesel;
-    @SerializedName("Precio Bioetanol")
     private String precioBioetanol;
-    @SerializedName("Precio Gas Natural Comprimido")
     private String precioGasNaturalComprimido;
-    @SerializedName("Precio Gas Natural Licuado")
     private String precioGasNaturalLicuado;
-    @SerializedName("Precio Gases licuados del petróleo")
     private String precioGasesLicuadosDelPetroleo;
-    @SerializedName("Precio Gasoleo A")
     private String precioGasoleoA;
-    @SerializedName("Precio Gasoleo B")
     private String precioGasoleoB;
-    @SerializedName("Precio Gasoleo Premium")
     private String precioGasoleoPremium;
-    @SerializedName("Precio Gasolina 95 E10")
     private String precioGasolina95E10;
-    @SerializedName("Precio Gasolina 95 E5")
     private String precioGasolina95E5;
-    @SerializedName("Precio Gasolina 95 E5 Premium")
     private String precioGasolina95E5Premium;
-    @SerializedName("Precio Gasolina 98 E10")
     private String precioGasolina98E10;
-    @SerializedName("Precio Gasolina 98 E5")
     private String recioGasolina98E5;
-    @SerializedName("Precio Hidrogeno")
     private String precioHidrogeno;
-    @SerializedName("Provincia")
     private String provincia;
-    @SerializedName("Remisión")
     private String remision;
-    @SerializedName("Rótulo")
     private String rotulo;
-    @SerializedName("Tipo Venta")
     private String tipoVenta;
-    @SerializedName("% BioEtanol")
     private String porcentajeBioEtanol;
-    @SerializedName("% Éster metílico")
     private String porcentajeEsterMetilico;
-    @SerializedName("IDEESS")
     private String IDEESS;
-    @SerializedName("IDMunicipio")
     private String IDMunicipio;
-    @SerializedName("IDProvincia")
     private String IDProvincia;
-    @SerializedName("IDCCAA")
     private String IDCCAA;
 
     public String getCP() {
