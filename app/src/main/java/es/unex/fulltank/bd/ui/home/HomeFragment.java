@@ -55,6 +55,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
     private FragmentHomeBinding binding;
     private LocationManager ubicacion;
     private Retrofit retrofit;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,25 +108,31 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
 
-
         //Posicion precisa
-      //  mMap.setMyLocationEnabled(true);
+        if (ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION);
+            return;
+        }else{
+            mMap.setMyLocationEnabled(true);
+        }
+
 
     }
 
     private void getLocalizacion() {
         int permiso;
-        permiso = ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION); //Comprueba el permiso
+       /* permiso = ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION); //Comprueba el permiso
         if (permiso == PackageManager.PERMISSION_DENIED) { //Comprueba si no esta otorgado
             // ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
             requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION);
-        }
+        }*/
 
         permiso = ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION);//SOLO NECESITA ESTE
         if (permiso == PackageManager.PERMISSION_DENIED) { //Comprueba si no esta otorgado
             //ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
             requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION);
         }
+
     }
 
     private ActivityResultLauncher<String> requestPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted ->
