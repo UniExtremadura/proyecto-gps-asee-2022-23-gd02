@@ -1,5 +1,7 @@
 package es.unex.fulltank;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -54,10 +56,8 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       // getLocalizacion();
-
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        binding = ActivityMainBinding.inflate(getLayoutInflater()); //Permite pasar de xml a una vista
+        setContentView(binding.getRoot()); // Establace la vista
 
         setSupportActionBar(binding.appBarMain.toolbar);
 
@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     public void getLocalizacion() {
+
         int permiso;
 
         permiso= ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION); //Comprueba el permiso
@@ -101,8 +102,9 @@ public class MainActivity extends AppCompatActivity  {
         if (permiso == PackageManager.PERMISSION_DENIED) { //Comprueba si no esta otorgado
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
         }
-    }
 
+    }
+/*
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -125,4 +127,5 @@ public class MainActivity extends AppCompatActivity  {
                 return;
         }
     }
+*/
 }

@@ -13,26 +13,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import es.unex.fulltank.bd.roomdb.PruebasBD;
-
 public class InicioSesion extends AppCompatActivity {
-    private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 28;
-    private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 29;
+    //private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 28;
+    //private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 29;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio_sesion);
 
-        //PRUEBAS DE LA BD ---------------------------------------------------------
-        AppExecutors.getInstance().diskIO().execute(() -> {
-            PruebasBD p = new PruebasBD(InicioSesion.this);
-            p.ejecutarPruebas();
-        });
-        // -------------------------------------------------------------------------
-
-        getLocalizacion();
-
-        Button button = findViewById(R.id.iniciarSesion);
+        Button button = findViewById(R.id.permisos);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,9 +32,16 @@ public class InicioSesion extends AppCompatActivity {
         });
     }
 
-    public void getLocalizacion() {
+  /*  public void darPermisos(){
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            getLocalizacion();
+            Intent intent = new Intent(InicioSesion.this,MainActivity.class);
+            startActivity(intent);
+        }
+        return;
+    }*/
+  /*  public void getLocalizacion() {
         int permiso;
-
         permiso= ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION); //Comprueba el permiso
         if (permiso == PackageManager.PERMISSION_DENIED) { //Comprueba si no esta otorgado
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
@@ -77,5 +73,5 @@ public class InicioSesion extends AppCompatActivity {
                 }
                 return;
         }
-    }
+    }*/
 }
