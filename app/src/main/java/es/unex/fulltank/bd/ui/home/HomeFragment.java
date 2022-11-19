@@ -158,7 +158,6 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         respuesta.enqueue(new Callback<RespuestaAPI>() {
             @Override
             public void onResponse(Call<RespuestaAPI> call, Response<RespuestaAPI> response) {
-                LatLng posicion;
                 if(response.isSuccessful()){
                     RespuestaAPI respuesta1 = response.body();
                     Log.i(TAG,"Fecha: "+respuesta1.getFecha());
@@ -187,10 +186,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                         Log.i(TAG,g.getPrecioHidrogeno());
                         Log.i(TAG,g.getPrecioGasoleoPremium());
                         Log.i(TAG,"------------------------------");
-                        posicion = new LatLng(Double.parseDouble(g.getLatitud()), -6.3445571);
-                        mMap.addMarker(new MarkerOptions()
-                                .position(posicion)
-                                .title("Unex"));
+
                     }
 
 
