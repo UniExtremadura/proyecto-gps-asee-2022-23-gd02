@@ -1,4 +1,4 @@
-package es.unex.fulltank.bd.ui.settings;
+package es.unex.fulltank.ui.historicoRepostaje;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,20 +12,20 @@ import androidx.lifecycle.ViewModelProvider;
 
 import es.unex.fulltank.databinding.FragmentFavoritosBinding;
 
-public class SettingsFragment extends Fragment {
+public class HistoricoRepostajeFragment extends Fragment {
 
     private FragmentFavoritosBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SettingsViewModel favoritosViewModel =
-                new ViewModelProvider(this).get(SettingsViewModel.class);
+        HistoricoRepostajeViewModel historicoRepostajeViewModel =
+                new ViewModelProvider(this).get(HistoricoRepostajeViewModel.class);
 
         binding = FragmentFavoritosBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textFavoritos;
-        favoritosViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        historicoRepostajeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

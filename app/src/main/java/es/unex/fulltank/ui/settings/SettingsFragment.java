@@ -1,4 +1,4 @@
-package es.unex.fulltank.bd.ui.favoritos;
+package es.unex.fulltank.ui.settings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,14 +12,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import es.unex.fulltank.databinding.FragmentFavoritosBinding;
 
-public class FavoritosFragment extends Fragment {
+public class SettingsFragment extends Fragment {
 
     private FragmentFavoritosBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        FavoritosViewModel favoritosViewModel =
-                new ViewModelProvider(this).get(FavoritosViewModel.class);
+        SettingsViewModel favoritosViewModel =
+                new ViewModelProvider(this).get(SettingsViewModel.class);
 
         binding = FragmentFavoritosBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

@@ -13,14 +13,6 @@
             android:icon="@drawable/ic_menu_favoritos"
             android:title="@string/menu_favoritos" />
         <item
-            android:id="@+id/nav_ubicaciones"
-            android:icon="@drawable/ic_menu_ubicaciones"
-            android:title="@string/menu_ubicaciones" />
-        <item
-            android:id="@+id/nav_vehiculos"
-            android:icon="@drawable/ic_menu_vehiculos"
-            android:title="@string/menu_vehiculos" />
-        <item
             android:id="@+id/nav_filtrarGasolineras"
             android:icon="@drawable/ic_menu_filtrar_gasolineras"
             android:title="@string/menu_filtrarGasolineras" />

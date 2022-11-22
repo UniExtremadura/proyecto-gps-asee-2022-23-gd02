@@ -1,16 +1,16 @@
-package es.unex.fulltank.bd.ui.historicoRepostaje;
+package es.unex.fulltank.ui.filtrarGasolineras;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HistoricoRepostajeViewModel extends ViewModel {
+public class FiltrarGasolinerasViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public HistoricoRepostajeViewModel() {
+    public FiltrarGasolinerasViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is Historico de Repostaje fragment");
+        mText.setValue("This is Filtrar Gasolineras fragment");
     }
 
     public LiveData<String> getText() {

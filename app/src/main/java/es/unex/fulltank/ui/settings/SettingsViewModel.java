@@ -1,16 +1,16 @@
-package es.unex.fulltank.bd.ui.filtrarGasolineras;
+package es.unex.fulltank.ui.settings;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class FiltrarGasolinerasViewModel extends ViewModel {
+public class SettingsViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public FiltrarGasolinerasViewModel() {
+    public SettingsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is Filtrar Gasolineras fragment");
+        mText.setValue("This is settings fragment");
     }
 
     public LiveData<String> getText() {

@@ -1,4 +1,4 @@
-package es.unex.fulltank.bd.ui.vehiculos;
+package es.unex.fulltank.ui.favoritos;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import es.unex.fulltank.databinding.FragmentVehiculosBinding;
+import es.unex.fulltank.databinding.FragmentFavoritosBinding;
 
-public class VehiculosFragment extends Fragment {
+public class FavoritosFragment extends Fragment {
 
-    private FragmentVehiculosBinding binding;
+    private FragmentFavoritosBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        VehiculosViewModel vehiculosViewModel =
-                new ViewModelProvider(this).get(VehiculosViewModel.class);
+        FavoritosViewModel favoritosViewModel =
+                new ViewModelProvider(this).get(FavoritosViewModel.class);
 
-        binding = FragmentVehiculosBinding.inflate(inflater, container, false);
+        binding = FragmentFavoritosBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textVehiculos;
-        vehiculosViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textFavoritos;
+        favoritosViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

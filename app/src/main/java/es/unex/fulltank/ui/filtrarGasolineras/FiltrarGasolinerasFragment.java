@@ -1,4 +1,4 @@
-package es.unex.fulltank.bd.ui.filtrarGasolineras;
+package es.unex.fulltank.ui.filtrarGasolineras;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
