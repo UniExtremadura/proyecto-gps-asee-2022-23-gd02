@@ -2,10 +2,10 @@ package es.unex.fulltank.ui.home;
 
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,40 +31,26 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeFragment extends Fragment implements OnMapReadyCallback {
-    private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 28;
-    private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 29;
-    private static final String TAG = "GASAPI";
     private GoogleMap mMap;
     private FragmentHomeBinding binding;
     private LocationManager ubicacion;
     private Retrofit retrofit;
+    private SupportMapFragment mapFragment;
     private double latitud;
     private double longitud;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        getLocalizacion();
-
-        ubicacion = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            latitud = 39.4789003; //latitud por defecto
-            longitud = -6.3445624; // longitud por defecto
-            requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION);
-            requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION);
-            return;
-        }else{
-            Location loc = ubicacion.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            latitud = loc.getLatitude(); //Ubicación precisa lataitud.
-            longitud = loc.getLongitude(); //Ubicacion precisa longitud.
-        }
 
         //API GASOLINERA
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
+
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -73,7 +59,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
+        mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
@@ -94,48 +80,65 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
         //Solicita en caso de no tener permisos de ubicaciones
         if (ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION);
-            requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION);
-        }else{
-            mMap.setMyLocationEnabled(true); //Ubicación precisa google maps
-        }
+            locationPermissionRequest.launch(new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+            });
+        } else {
+            ubicacion = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+            ubicacion.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 10, locationListenerGPS);
 
-        LatLng posicion = new LatLng(latitud, longitud);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicion, 17)); //Zoom a la ubicación.
-
-    }
-
-    //Método para solicitar los permisos de ubicación al usuario
-    private void getLocalizacion() {
-
-        if (ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) { //Comprueba si no esta otorgado
-            requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION);
-            requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION);
         }
 
     }
 
-    @SuppressLint("MissingPermission") // Se garantizan los permisos
-    private ActivityResultLauncher<String> requestPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted ->
-    {
-        if (isGranted) {
-            //Permisos concedidos
+
+    LocationListener locationListenerGPS = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+            latitud = location.getLatitude();
+            longitud = location.getLongitude();
             if (ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
-            ubicacion = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-            Location loc = ubicacion.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            latitud = loc.getLatitude();
-            longitud = loc.getLongitude();
             mMap.setMyLocationEnabled(true);
-
             LatLng posicion = new LatLng(latitud, longitud);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicion, 17)); //Zoom a la ubicación.
 
-        }else{
-            //Permisos denegados
+
         }
 
-    });
 
+        @Override
+        public void onProviderEnabled(String provider) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+
+        }
+    };
+
+    ActivityResultLauncher<String[]> locationPermissionRequest =
+            registerForActivityResult(new ActivityResultContracts
+                            .RequestMultiplePermissions(), result -> {
+                        Boolean fineLocationGranted = result.getOrDefault(
+                                Manifest.permission.ACCESS_FINE_LOCATION, false);
+                        Boolean coarseLocationGranted = result.getOrDefault(
+                                Manifest.permission.ACCESS_COARSE_LOCATION, false);
+                        if (fineLocationGranted != null && fineLocationGranted) {
+
+                            ubicacion = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+                            ubicacion.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 10, locationListenerGPS);
+                        } else {
+                            //Permisos denegados
+                            latitud = 39.4789003; //latitud por defecto
+                            longitud = -6.3445624; // longitud por defecto
+                            LatLng posicion = new LatLng(latitud, longitud);
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicion, 17)); //Zoom a la ubicación.
+                        }
+
+                    }
+            );
 }
