@@ -1,5 +1,7 @@
 package es.unex.fulltank.bd.roomdb;
 
+import static androidx.room.OnConflictStrategy.IGNORE;
+
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -21,32 +23,45 @@ public interface UsuarioDao {
      * Devuelve una lista con todos los Usuarios de la tabla de usuarios.
      * @return Una lista con todos los usuarios de la tabla de usuario.
      */
-    @Query("SELECT * FROM tabla_usuario")
+    @Query("SELECT * FROM usuario")
     List<Usuario> getAll();
 
     /**
      * Devuelve un Usuario dado su id.
      * @param uid
      */
-    @Query("SELECT * FROM tabla_usuario WHERE uid = :uid")
+    @Query("SELECT * FROM usuario WHERE uid = :uid")
     Usuario getById(int uid);
 
+
     /**
-     * Devuelve un usuario dado su nombre y apellidos.
-     * @param nombre
-     * @param apellido1
-     * @param apellido2
+     * Devuelve un Usuario dado su nombre de usuario.
+     * @param usuario
      */
-    @Query("SELECT * FROM tabla_usuario WHERE nombre = :nombre AND apellido1 = :apellido1 and apellido2 = :apellido2")
-    Usuario getByFullName(String nombre, String apellido1, String apellido2);
+    @Query("SELECT * FROM usuario WHERE usuario = :usuario")
+    Usuario getByUsuario(String usuario);
+
+    /**
+     * Devuelve un Usuario dado su correo.
+     * @param correo
+     */
+    @Query("SELECT * FROM usuario WHERE correo = :correo")
+    Usuario getByCorreo(String correo);
+
+    /**
+     * Devuelve un Usuario dado su usuario y contraseña.
+     * @param correo
+     * @param contra
+     */
+    @Query("SELECT * FROM usuario WHERE correo = :correo and contra = :contra")
+    Usuario getByLogin(String correo,String contra);
 
     /**
      * Inserta un usuario en la tabla de usuarios.
      * @param usuario
      */
-    @Insert
+    @Insert (onConflict = IGNORE)
     void insert (Usuario usuario);
-
     /**
      * Actualiza un Usuario de la tabla de usuarios.
      * @param usuario
@@ -57,6 +72,6 @@ public interface UsuarioDao {
     /**
      * Borra todos los usuarios de la tabla de usuarios.
      */
-    @Query("DELETE FROM tabla_usuario")
+    @Query("DELETE FROM usuario")
     void deleteAll();
 }

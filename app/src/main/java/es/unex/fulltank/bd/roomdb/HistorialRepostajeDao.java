@@ -1,5 +1,7 @@
 package es.unex.fulltank.bd.roomdb;
 
+import static androidx.room.OnConflictStrategy.IGNORE;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -23,7 +25,7 @@ public interface HistorialRepostajeDao {
      * Devuelve todos los elementos HistorialRepostaje de la tabla de historiales de la BD.
      * @return todos los elementos de la tabla de HistorialRepostaje.
      */
-    @Query("SELECT * FROM tabla_historial_repostaje")
+    @Query("SELECT * FROM historial_repostaje")
     List<HistorialRepostaje> getAll();
 
     /**
@@ -32,14 +34,16 @@ public interface HistorialRepostajeDao {
      * @param timestamp
      * @return Un elemento de la clase HistorialRepostaje
      */
-    @Query("SELECT * FROM tabla_historial_repostaje WHERE fecha = :timestamp")
-    HistorialRepostaje getByTimestamp(Long timestamp);
+    @Query("SELECT * FROM historial_repostaje WHERE fecha = :timestamp")
+    HistorialRepostaje getByTimestamp(String timestamp);
 
+    @Query("SELECT * FROM historial_repostaje WHERE latitud=:latitud and longitud=:longitud and uid=:uid and fecha = :fecha")
+    HistorialRepostaje getByPrimaryKey(double latitud,double longitud,int uid,String fecha);
     /**
      * Inserta un HistorialRepostaje en la BD.
      * @param historial
      */
-    @Insert
+    @Insert (onConflict = IGNORE)
     void insert (HistorialRepostaje historial);
 
     /**
@@ -60,6 +64,6 @@ public interface HistorialRepostajeDao {
     /**
      * Borra todos los elementos de la tabla de historial de repostaje.
      */
-    @Query("DELETE FROM tabla_historial_repostaje")
+    @Query("DELETE FROM historial_repostaje")
     void deleteAll();
 }

@@ -6,17 +6,19 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import es.unex.fulltank.bd.elembd.UsuarioVehiculo;
+import es.unex.fulltank.bd.elembd.CombustibleGasolinera;
 import es.unex.fulltank.bd.elembd.Gasolinera;
+import es.unex.fulltank.bd.elembd.GasolineraFavorita;
+import es.unex.fulltank.bd.elembd.GasolineraResenha;
 import es.unex.fulltank.bd.elembd.HistorialRepostaje;
+import es.unex.fulltank.bd.elembd.TipoCombustible;
 import es.unex.fulltank.bd.elembd.Usuario;
-import es.unex.fulltank.bd.elembd.Vehiculo;
 
 /**
  * La base de datos implementa un patrón singleton.
  *
  */
-@Database(entities = {Gasolinera.class, HistorialRepostaje.class, Usuario.class, Vehiculo.class, UsuarioVehiculo.class}, version = 2)
+@Database(entities = {Gasolinera.class, HistorialRepostaje.class, Usuario.class, GasolineraFavorita.class, GasolineraResenha.class, TipoCombustible.class, CombustibleGasolinera.class}, version = 4)
 public abstract class BD extends RoomDatabase {
     private static BD instance;
 
@@ -39,8 +41,10 @@ public abstract class BD extends RoomDatabase {
 
     /*Los siguientes métodos devuelven los DAO correspondientes a cada tabla de la BD.*/
     public abstract UsuarioDao getUsuarioDao();
-    public abstract VehiculoDao getVehiculoDao();
     public abstract HistorialRepostajeDao getHistorialRepostajeDao();
     public abstract GasolineraDao getGasolineraDao();
-    public abstract UsuarioVehiculoDao getUsuarioVehiculoDao();
+    public abstract GasolineraFavoritaDao getGasolineraFavoritaDao();
+    public abstract GasolineraResenhaDao getGasolineraResenhaDao();
+    public abstract TipoCombustibleDao getTipoCombustibleDao();
+    public abstract CombustibleGasolineraDao getCombustibleGasolineraDao();
 }

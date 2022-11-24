@@ -5,21 +5,12 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 
-/**
- * La idea de esta clase es representar un historial para registrar cada vez que se hace un repostaje
- * en la aplicación. Se registran datos de la Gasolinera en la que se reposta, la fecha de repostaje,
- * el Vehículo que hace el repostaje y otros campos.
- * Es una clase implementada con anotaciones de Room. Se ha configurado de tal manera que cada atributo
- * de esta clase se mapea a una columna de una tabla de la Base de datos de este proyecto,
- * utilizando anotaciones.
- * @author Grupo PGD02
- * @version 1.0
- */
-@Entity(tableName = "historial_repostaje", primaryKeys = {"latitud", "longitud","uid","fecha"}, foreignKeys = {
+@Entity(tableName = "gasolinera_resenha", primaryKeys = {"latitud", "longitud","uid","fecha"}, foreignKeys = {
         @ForeignKey(entity = Gasolinera.class, parentColumns = {"latitud", "longitud"}, childColumns = {"latitud", "longitud"}),
         @ForeignKey(entity = Usuario.class, parentColumns = {"uid"}, childColumns = {"uid"})
 })
-public class HistorialRepostaje {
+public class GasolineraResenha {
+
     @ColumnInfo(name = "fecha")
     @NonNull
     private String fecha;
@@ -33,30 +24,24 @@ public class HistorialRepostaje {
     @NonNull
     private int uid;
 
-    @ColumnInfo(name = "litros")
-    private double litros;  //Litros de gasolina repostados
-
-    @ColumnInfo(name = "precio")
-    private double precio;
+    @ColumnInfo(name = "comentario")
+    private String comentario ;
 
 
-
-    public HistorialRepostaje(String fecha, double latitud, double longitud,int uid,double precio,double litros) {
+    public GasolineraResenha(String fecha, double latitud, double longitud,int uid,String comentario) {
         this.fecha = fecha;
         this.latitud = latitud;
         this.longitud = longitud;
         this.uid=uid;
-        this.litros = litros;
-        this.precio=precio;
-
-
+        this.comentario = comentario;
     }
 
+    @NonNull
     public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(@NonNull String fecha) {
         this.fecha = fecha;
     }
 
@@ -84,19 +69,11 @@ public class HistorialRepostaje {
         this.uid = uid;
     }
 
-    public double getLitros() {
-        return litros;
+    public String getComentario() {
+        return comentario;
     }
 
-    public void setLitros(double litros) {
-        this.litros = litros;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 }

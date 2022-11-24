@@ -1,5 +1,8 @@
 package es.unex.fulltank.bd.roomdb;
 
+import static androidx.room.OnConflictStrategy.IGNORE;
+import static androidx.room.OnConflictStrategy.REPLACE;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -22,21 +25,21 @@ public interface GasolineraDao {
      * Devuelve todas las gasolineras.
      * @return Una lista con todas las gasolineras.
      */
-    @Query("SELECT * FROM tabla_gasolinera")
+    @Query("SELECT * FROM gasolinera")
     List<Gasolinera> getAll();
 
     /**
      * Devuelve una gasolinera dado su ID.
      * @return Una gasolinera con el ID que viene por parametro.
      */
-    @Query("SELECT * FROM tabla_gasolinera WHERE latitud = :latitud AND longitud = :longitud")
-    Gasolinera getByCoords(String latitud, String longitud);
+    @Query("SELECT * FROM gasolinera WHERE latitud = :latitud AND longitud = :longitud")
+    Gasolinera getByCoords(Double latitud, Double longitud);
 
     /**
      * Inserta una gasolinera en la BD.
      * @param gasolinera
      */
-    @Insert
+    @Insert (onConflict = REPLACE)
     void insert (Gasolinera gasolinera);
 
     /**
@@ -56,6 +59,6 @@ public interface GasolineraDao {
     /**
      * Borra todos los datos de la tabla de gasolineras.
      */
-    @Query("DELETE FROM tabla_gasolinera")
+    @Query("DELETE FROM gasolinera")
     void deleteAll();
 }

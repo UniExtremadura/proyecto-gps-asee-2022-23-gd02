@@ -1,5 +1,8 @@
 package es.unex.fulltank.apiRest.interfaces;
 
+import java.util.ArrayList;
+
+import es.unex.fulltank.apiRest.modelos.Combustibles;
 import es.unex.fulltank.apiRest.modelos.RespuestaAPI;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -80,4 +83,11 @@ public interface GasolineraAPI {
      */
     @GET("EstacionesTerrestres/FiltroProvinciaProducto/{IDProvincia}/{IDProducto}")
     public Call<RespuestaAPI> obtenerGasolinerasFiltroProvinciaProducto(@Path("IDProvincia") String IDProvincia, @Path("IDProducto") String IDProducto);
+
+    /**
+     * Obtiene todos los productos petroliferos
+     * @return Devuelve un objeto RespuestaAPI con todos los productos petroliferos
+     */
+    @GET("Listados/ProductosPetroliferos/")
+    public Call<ArrayList<Combustibles>> obtenerTiposCombustible();
 }
