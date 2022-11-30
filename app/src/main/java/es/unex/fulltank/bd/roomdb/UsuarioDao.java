@@ -50,11 +50,12 @@ public interface UsuarioDao {
 
     /**
      * Devuelve un Usuario dado su usuario y contraseña.
-     * @param correo
+     *
+     * @param usuario
      * @param contra
      */
-    @Query("SELECT * FROM usuario WHERE correo = :correo and contra = :contra")
-    Usuario getByLogin(String correo,String contra);
+    @Query("SELECT * FROM usuario WHERE usuario = :usuario and contra = :contra")
+    Usuario getByLogin(String usuario, String contra);
 
     /**
      * Inserta un usuario en la tabla de usuarios.
