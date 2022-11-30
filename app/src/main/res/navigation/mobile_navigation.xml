@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/nav_gasolineras"
+        android:name="es.unex.fulltank.ui.gasolineras.GasolinerasFragment"
+        android:label="@string/menu_gasolineras"
+        tools:layout="@layout/fragment_gasolineras" />
+
+    <fragment
         android:id="@+id/nav_favoritos"
         android:name="es.unex.fulltank.ui.favoritos.FavoritosFragment"
         android:label="@string/menu_favoritos"
