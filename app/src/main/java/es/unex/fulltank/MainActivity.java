@@ -1,7 +1,5 @@
 package es.unex.fulltank;
 
-import android.content.Context;
-import android.location.LocationManager;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +15,7 @@ import es.unex.fulltank.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity  {
 
-
+    private static int identificador;
     private ActivityMainBinding binding;
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -25,8 +23,8 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        CargaDatos c = new CargaDatos(this);
-        c.Datos();
+
+        identificador = getIntent().getExtras().getInt("IDENTIFICADOR");
 
         binding = ActivityMainBinding.inflate(getLayoutInflater()); //Permite pasar de xml a una vista
         setContentView(binding.getRoot()); // Establace la vista
