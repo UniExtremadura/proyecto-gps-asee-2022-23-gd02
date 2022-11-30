@@ -1,7 +1,5 @@
 package es.unex.fulltank;
 
-import android.content.Context;
-import android.location.LocationManager;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity  {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_favoritos, R.id.nav_filtrarGasolineras,
+                R.id.nav_home, R.id.nav_favoritos, R.id.nav_filtrarGasolineras, R.id.nav_gasolineras,
                 R.id.nav_historicoRepostaje, R.id.nav_settings)
                 .setOpenableLayout(drawer)
                 .build();
