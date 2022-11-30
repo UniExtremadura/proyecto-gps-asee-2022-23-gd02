@@ -8,6 +8,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
+    <string name="menu_gasolineras">Gasolineras</string>
     <string name="menu_favoritos">Favoritos</string>
     <string name="menu_filtrarGasolineras">Filtrar Gasolineras</string>
     <string name="menu_historicoRepostaje">Historico de Repostaje</string>

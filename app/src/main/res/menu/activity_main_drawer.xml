@@ -9,6 +9,10 @@
             android:icon="@drawable/ic_menu_home"
             android:title="@string/menu_home" />
         <item
+            android:id="@+id/nav_gasolineras"
+            android:icon="@drawable/ic_action_gas"
+            android:title="@string/menu_gasolineras" />
+        <item
             android:id="@+id/nav_favoritos"
             android:icon="@drawable/ic_menu_favoritos"
             android:title="@string/menu_favoritos" />
