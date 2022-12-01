@@ -5,8 +5,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "tipo_combustible")
-public class TipoCombustible {
+public class TipoCombustible implements Serializable {
 
     @PrimaryKey
     @NonNull
@@ -15,8 +17,8 @@ public class TipoCombustible {
     @ColumnInfo(name = "nombre")
     private String nombre;
 
-    public TipoCombustible(int cid,String nombre){
-        this.cid=cid;
+    public TipoCombustible(int cid, String nombre) {
+        this.cid = cid;
         this.nombre=nombre;
     }
 
