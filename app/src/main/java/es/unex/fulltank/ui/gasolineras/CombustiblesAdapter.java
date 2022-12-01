@@ -18,8 +18,8 @@ import es.unex.fulltank.bd.elembd.TipoCombustible;
 public class CombustiblesAdapter extends RecyclerView.Adapter<CombustiblesAdapter.ViewHolderCombustible> {
 
     private final Context context;
-    ArrayList<TipoCombustible> lTipoComb;
-    ArrayList<CombustibleGasolinera> lComb;
+    private ArrayList<TipoCombustible> lTipoComb;
+    private ArrayList<CombustibleGasolinera> lComb;
 
     public CombustiblesAdapter(ArrayList<TipoCombustible> lTipoComb, ArrayList<CombustibleGasolinera> lComb, Context context) {
         this.lTipoComb = lTipoComb;
@@ -46,14 +46,17 @@ public class CombustiblesAdapter extends RecyclerView.Adapter<CombustiblesAdapte
 
     public class ViewHolderCombustible extends RecyclerView.ViewHolder {
 
+        private final TextView tipoCombustible;
         private final TextView precio;
 
         public ViewHolderCombustible(@NonNull View itemView) {
             super(itemView);
+            tipoCombustible = itemView.findViewById(R.id.tipo_combustible_tv);
             precio = itemView.findViewById(R.id.precio_combustible_tv);
         }
 
         public void asignarDatos(TipoCombustible tc, CombustibleGasolinera comb) {
+            tipoCombustible.setText(tc.getNombre());
             precio.setText("" + comb.getPrecio());
         }
     }
