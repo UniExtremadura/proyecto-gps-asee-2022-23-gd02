@@ -12,4 +12,11 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/precio_combustible_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:textSize="20sp" />
+
 </LinearLayout>

@@ -47,14 +47,17 @@ public class CombustiblesAdapter extends RecyclerView.Adapter<CombustiblesAdapte
     public class ViewHolderCombustible extends RecyclerView.ViewHolder {
 
         private final TextView tipoCombustible;
+        private final TextView precio;
 
         public ViewHolderCombustible(@NonNull View itemView) {
             super(itemView);
             tipoCombustible = itemView.findViewById(R.id.tipo_combustible_tv);
+            precio = itemView.findViewById(R.id.precio_combustible_tv);
         }
 
         public void asignarDatos(TipoCombustible tc, CombustibleGasolinera comb) {
             tipoCombustible.setText(tc.getNombre());
+            precio.setText("" + comb.getPrecio());
         }
     }
 }
