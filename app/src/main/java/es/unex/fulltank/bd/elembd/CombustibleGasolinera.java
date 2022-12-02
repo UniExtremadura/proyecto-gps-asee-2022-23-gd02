@@ -5,11 +5,13 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 
-@Entity(tableName = "combustible_gasolinera", primaryKeys = {"latitud", "longitud","cid"}, foreignKeys = {
+import java.io.Serializable;
+
+@Entity(tableName = "combustible_gasolinera", primaryKeys = {"latitud", "longitud", "cid"}, foreignKeys = {
         @ForeignKey(entity = Gasolinera.class, parentColumns = {"latitud", "longitud"}, childColumns = {"latitud", "longitud"}),
         @ForeignKey(entity = TipoCombustible.class, parentColumns = {"cid"}, childColumns = {"cid"})
 })
-public class CombustibleGasolinera {
+public class CombustibleGasolinera implements Serializable {
 
     @ColumnInfo(name = "latitud")
     @NonNull
