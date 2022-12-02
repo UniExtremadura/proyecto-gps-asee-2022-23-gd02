@@ -31,20 +31,26 @@ public interface HistorialRepostajeDao {
     /**
      * Devuelve un historial de repostaje dado un timestamp, el cual se corresponde con su clave
      * primaria
+     *
      * @param timestamp
      * @return Un elemento de la clase HistorialRepostaje
      */
     @Query("SELECT * FROM historial_repostaje WHERE fecha = :timestamp")
     HistorialRepostaje getByTimestamp(String timestamp);
 
+    @Query("SELECT * FROM historial_repostaje WHERE uid = :uid")
+    List<HistorialRepostaje> getById(int uid);
+
     @Query("SELECT * FROM historial_repostaje WHERE latitud=:latitud and longitud=:longitud and uid=:uid and fecha = :fecha")
-    HistorialRepostaje getByPrimaryKey(double latitud,double longitud,int uid,String fecha);
+    HistorialRepostaje getByPrimaryKey(double latitud, double longitud, int uid, String fecha);
+
     /**
      * Inserta un HistorialRepostaje en la BD.
+     *
      * @param historial
      */
-    @Insert (onConflict = IGNORE)
-    void insert (HistorialRepostaje historial);
+    @Insert(onConflict = IGNORE)
+    void insert(HistorialRepostaje historial);
 
     /**
      * Actualiza el elemento de la tabla de historiales que se corresponda con el HistorialRepostaje

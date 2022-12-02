@@ -1,32 +1,73 @@
 package es.unex.fulltank.ui.historicoRepostaje;
 
+import static es.unex.fulltank.MainActivity.identificador;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import es.unex.fulltank.databinding.FragmentFavoritosBinding;
+import java.util.ArrayList;
+
+import es.unex.fulltank.AppExecutors;
+import es.unex.fulltank.SimpleDividerItemDecoration;
+import es.unex.fulltank.bd.elembd.HistorialRepostaje;
+import es.unex.fulltank.bd.roomdb.BD;
+import es.unex.fulltank.databinding.FragmentHistoricoRepostajeBinding;
 
 public class HistoricoRepostajeFragment extends Fragment {
 
-    private FragmentFavoritosBinding binding;
+    private FragmentHistoricoRepostajeBinding binding;
+    private RecyclerView recycler;
+    private ArrayList<HistorialRepostaje> lHistorial;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        HistoricoRepostajeViewModel historicoRepostajeViewModel =
-                new ViewModelProvider(this).get(HistoricoRepostajeViewModel.class);
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        binding = FragmentFavoritosBinding.inflate(inflater, container, false);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentHistoricoRepostajeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textFavoritos;
-        historicoRepostajeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        lHistorial = new ArrayList<HistorialRepostaje>();
+
+        recycler = binding.historial;
+        recycler.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(),
+                LinearLayoutManager.VERTICAL, false));
+        recycler.addItemDecoration(new SimpleDividerItemDecoration(getActivity().getApplicationContext()));
+
+        cargarHistorial();
+
         return root;
+    }
+
+    private void cargarHistorial() {
+        lHistorial.clear();
+        BD instanceBD = BD.getInstance(getActivity().getApplicationContext());
+        AppExecutors.getInstance().diskIO().execute(() -> {
+            lHistorial = (ArrayList<HistorialRepostaje>) instanceBD.getHistorialRepostajeDao().getById(identificador);
+            AppExecutors.getInstance().mainThread().execute(() -> {
+                HistoricoAdapter adapter = new HistoricoAdapter(lHistorial, getActivity().getApplicationContext());
+                recycler.setAdapter(adapter);
+            });
+        });
+
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        cargarHistorial();
     }
 
     @Override
@@ -34,4 +75,5 @@ public class HistoricoRepostajeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
 }
