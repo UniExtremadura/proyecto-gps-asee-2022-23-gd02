@@ -44,4 +44,7 @@ public interface GasolineraFavoritaDao {
 
     @Query("DELETE FROM gasolinera_favorita")
     void deleteAll();
+
+    @Query("DELETE FROM gasolinera_favorita WHERE latitud=:latitud and longitud=:longitud and uid=:uid")
+    void deleteByPrimaryKey(double latitud, double longitud, double uid);
 }
