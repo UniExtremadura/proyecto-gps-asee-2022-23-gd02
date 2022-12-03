@@ -1,16 +1,27 @@
 package es.unex.fulltank;
 
+import static es.unex.fulltank.MainActivity.identificador;
+
 import android.content.Intent;
 import android.content.Intent;
 import static es.unex.fulltank.MainActivity.identificador;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+import android.view.View;
 import android.view.View;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import es.unex.fulltank.bd.elembd.HistorialRepostaje;
+import es.unex.fulltank.bd.roomdb.BD;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,5 +102,20 @@ public class GasolineraDetalleActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    public void repostar(View view) {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+        String fecha = dateFormat.format(date);
+
+        HistorialRepostaje hr = new HistorialRepostaje(fecha, latitud, longitud, identificador, 50.2, 26);
+
+        AppExecutors.getInstance().diskIO().execute(() -> {
+            instanceBD.getHistorialRepostajeDao().insert(hr);
+        });
+
+        Toast.makeText(GasolineraDetalleActivity.this, "Se ha repostado 26 litros, un total de 50,2 euros", Toast.LENGTH_SHORT).show();
     }
 }
