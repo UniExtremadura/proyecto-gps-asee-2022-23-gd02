@@ -10,6 +10,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
+import es.unex.fulltank.bd.elembd.GasolineraResenha;
+import es.unex.fulltank.bd.roomdb.BD;
+import es.unex.fulltank.ui.resenha.ResenhaFragment;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -22,6 +27,8 @@ public class ResenhaActivity extends AppCompatActivity {
     private double latitud;
     private double longitud;
     private EditText edResenha;
+    private ResenhaFragment fragment;
+
     private BD instanceBD;
 
 
@@ -45,7 +52,7 @@ public class ResenhaActivity extends AppCompatActivity {
         tv_rotulo.setText(rotulo);
         tv_calle.setText(calle);
 
-
+        cargarResenhaFragment();
     }
 
     public void addResenha(View view) {
@@ -56,6 +63,20 @@ public class ResenhaActivity extends AppCompatActivity {
         GasolineraResenha gr = new GasolineraResenha(fecha, latitud, longitud, identificador, resenha);
         AppExecutors.getInstance().diskIO().execute(() -> {
             instanceBD.getGasolineraResenhaDao().insert(gr);
+            AppExecutors.getInstance().mainThread().execute(() -> {
+                cargarResenhaFragment();
+            });
+        });
+    }
+
+    private void cargarResenhaFragment() {
+        instanceBD = BD.getInstance(this);
+        AppExecutors.getInstance().diskIO().execute(() -> {
+            List<GasolineraResenha> lResenha = instanceBD.getGasolineraResenhaDao().getByCoords(latitud, longitud);
+            AppExecutors.getInstance().mainThread().execute(() -> {
+                fragment = ResenhaFragment.newInstance(lResenha);
+                getSupportFragmentManager().beginTransaction().replace(R.id.contenedorResenhasNuevo, fragment).commit();
+            });
         });
     }
 }
