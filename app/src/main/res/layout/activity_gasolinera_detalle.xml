@@ -7,6 +7,31 @@
     android:layout_height="match_parent"
     tools:context=".GasolineraDetalleActivity">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="44dp"
+        android:clickable="true"
+        android:contentDescription="Botón favoritos"
+        android:onClick="favoritos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_menu_favoritos" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbResenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="44dp"
+        android:clickable="true"
+        android:contentDescription="Botón reseñas"
+        android:onClick="irResenha"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_chat_24" />
     <Button
         android:id="@+id/bRepostar"
         android:layout_width="wrap_content"
