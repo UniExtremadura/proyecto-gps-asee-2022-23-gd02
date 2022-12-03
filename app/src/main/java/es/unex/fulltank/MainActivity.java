@@ -17,7 +17,7 @@ import es.unex.fulltank.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity  {
 
-    private static int identificador;
+    public static int identificador;
     private ActivityMainBinding binding;
 
     private AppBarConfiguration mAppBarConfiguration;
