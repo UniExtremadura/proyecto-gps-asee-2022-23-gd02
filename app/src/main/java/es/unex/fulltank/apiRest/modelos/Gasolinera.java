@@ -234,11 +234,11 @@ public class Gasolinera{
         this.precioGasolina98E10 = precioGasolina98E10;
     }
 
-    public String getRecioGasolina98E5() {
+    public String getPrecioGasolina98E5() {
         return recioGasolina98E5;
     }
 
-    public void setRecioGasolina98E5(String recioGasolina98E5) {
+    public void setPrecioGasolina98E5(String recioGasolina98E5) {
         this.recioGasolina98E5 = recioGasolina98E5;
     }
 

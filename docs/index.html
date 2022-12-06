@@ -1,6 +1,235 @@
 <!DOCTYPE html>
 <html lang="es">
+     <head>
+          <!-- Required meta tags -->
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+          <!-- Title tag -->
+          <title>FullTank</title>
+
+          <!-- Font awesome -->
+          <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+          <!-- Animate.css -->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+          <!-- Normalize -->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css">
+
+          <!-- Custom CSS -->
+          <link href="css/styles.css" rel="stylesheet">
+         
+         <style>
+               /* If you wish to remove the astonish.js file, then also be sure to remove these styles. */
+               .astonish {
+                    visibility: visible;
+               }
+
+               @media (min-width: 768px) {
+                    .astonish {
+                         visibility: hidden;
+                    }
+                    .animated {
+                         visibility: visible;
+                    }
+               }
+          </style>
+     </head>
+     <body>
           <header>
-                    <h1><strong>Creacion de la landing page</h1>
+               <div class="wrapper astonish animated fadeInDown">
+                    <h1>FullTank</h1>
+                    
+               </div>
           </header>
+          <main>
+
+               <div class="content-wrapper" id="about">
+                    <!-- second replaceble image -->
+                    <div class="grid-col-sm-12 grid-col-md-6 astonish" data-animation="fadeInLeft">
+                         <h2 class="section-title">Sobre FullTank</h2>
+                         <p>El motivo de desarrollo de esta página web es poder mostrar al usuario información sobre la aplicación FullTank, la cual ha sido desarrollada por 4 alumnos del Grado de Ing. Informática en Ing. del Software.</p>
+                         <p>FullTank proporciona a sus usuario una mayor información de las gasolineras a la hora de realizar sus repostajes, por lo que ayuda a tomar deciones con mayor rapidez al tener toda la información conjunta en esta aplicación.
+                              Además, permite que el usuario ahorre dinero al conocer los precios de sus gasolineras cercanas.</p>
+                         <table >
+                              <tr>
+                                   <td>
+                                        <center><img class="imagen" alt="Registro de usuario" src="img/ImagenMapa.jpeg"></center>
+                                   </td>
+
+                                   <td>
+                                        <p>Esta aplicación dispone de una pantalla principal en la que se muestra un mapa con la ubicación actual del usuario, en el cual se puede observar un conjunto de macadores rojos que corresponden a las ubicaciones de las diversas estaciones de repostaje.</p>
+                                        <p>Una vez se hayan cargado las ubicaciones de las gasolineras solo se mostrarán aquellas que se encuentran en un radio de 111km de la ubicación del usuario.</p>
+                                        <p>Es importante mencionar que en caso de que no se acepten los persimos de localización que se solicitan al inicio de la aplicación se obtendran las estaciones cercanas a una ubicación predeterminada, concretamente la ubicación es en Cáceres.</p>
+                                   </td>
+                              </tr>
+                              <tr>
+                                   <td>
+                                        <p>Mediante el acceso a la información de una determinada gasolinera se observa la siguiente información:</p>
+                                        <ul>
+                                             <li class="lista">Rótulo.</li>
+                                             <li class="lista">Calle en la que se encuentra.</li>
+                                             <li class="lista">Municipio.</li>
+                                             <li class="lista">Combustibles y su precio.</li>
+                                        </ul>
+                                        <p>Además, usando los botones de la parte inferior el usuario puede llevar a cabo las siguientes funcionalidades:</p>
+                                        <ul>
+                                             <li class="lista">Añadir la gasolinera a favoritos para poder acceder a su información con mayor rapidez.</li>
+                                             <li class="lista">Almacenamiento de la información de un repostaje.</li>
+                                             <li class="lista">Observar o añadir las opiones de los diversos usuarios sobre esa estación de repostaje.</li>
+                                        </ul>
+                                   </td>
+                                   <td>
+                                        <center><img class="imagen" alt="Lista de gasolineras filtradas" src="img/ImagenInfoGasolinera.jpeg"></center>
+                                   </td>
+                              </tr>
+                              <tr>
+                                   <td>
+                                        <center><img class="imagen" alt="Pantalla del mapa" src="img/ImagenFiltro.jpeg"></center>
+                                   </td>
+                                   <td>
+                                        <p>Para llevar a cabo con mayor rapidez la busqueda de aquellas gasolineras que dispongan de un combustible concreto se ha generado un filtro.</p>
+                                        <p>Cuando se filtre la información el usuario se puede encontrar con dos caso:</p>
+                                        <ul>
+                                             <li class="lista">Puede no haber ninguna gasolinera con ese tipo de combusitble por lo que se muestra un mensaje informado al usuario.</li>
+                                             <li class="lista">En caso de existir alguna estación de repostaje con ese tipo de combustible se mostrará una lista con la ubicación de todas las gasolineras.</li>
+                                        </ul>
+                                   </td>
+                              </tr>
+                              <tr>
+                                   <td>
+                                        <p>Otra de las pantallas características de la aplicación es la del historial de repostaje, donde se almacena la información de todos los repostajes que ha realizado el usuario y los ha notificado.</p>
+                                        <p>En cada uno de los repostajes se muestra la fecha en la que realizó, la ubicación y el rótulo de la gasolinera, los litros que se han repostado y el precio total del repostaje. </p>
+                                        <p> Esta ventana permite al usuario conocer si el pprecio del combustible ha variado con respecto al último repostaje.</p>
+                                   </td>
+                                   <td>
+                                        <center> <img class="imagen" alt="Panel lateral de la aplicacion" src="img/ImagenHistorico.jpeg"> </center>
+                                   </td>
+                              </tr>
+                         </table>
+                    </div>
+               </div>
+
+               <div class="content-wrapper" id="Grupos_de_interes">
+                    <!-- third replaceble image -->
+                    <div class="grid-col-sm-12 grid-col-md-6 astonish" data-animation="fadeInRight">
+                         <h2 class="section-title">Grupos de interes</h2>
+                         <p>Esta aplicacion está destinada principalmente a todas aquellas personas
+                              que dispongan de un vehículo o puedan conducir uno, debido a que se
+                              pretende ayudar al usuario a escoger
+                              la gasolinera que más se ajuste a sus necesidades.</p>
+                         <p>Otro grupo de interés son aquellas personas sin carnet que conduzcan
+                              automoviles o los copilotos de los vehículos para poder informar al
+                              piloto.</p>
+                         <p>Todos los grupos de interés que utilizan está aplicación se encuentran
+                              atraidos por el mismo objetivo, que es el de poder ahorrar dinero a la
+                              hora de repostar combustibles en
+                              la gasolinera más cercana posible a su ubicación actual.</p>
+                    </div>
+               </div>
+
+               <div class="content-wrapper" id="integrantes_id">
+
+                    <div class="grid-col-sm-12 grid-col-md-6 astonish" data-animation="fadeInLeft">
+                         <h2 class="section-title">Integrantes del grupo</h2>
+                         <p>FullTank ha sido desarrollada por los siguientes 4 integrantes, de los
+                              cuales tres de ellos cursan ASEE y GPS, el otro miembro solo cursa
+                              GPS: </p>
+                         <ul class="nav-links">
+                              <li>
+                                   Rafael Cabanillas Murillo: cursa GPS y ASEE.
+                                   <a href="https://github.com/RafaCMur">
+                                        <img class="imagen2" alt="Icono de Github"
+                                             src="img/github.png"> </a>
+
+                              </li>
+                              <li>
+                                   Alberto Manuel Campos Clemente: cursa GPS y ASEE.
+                                   <a href="https://github.com/alcamposc">
+                                        <img class="imagen2" alt="Icono de Github"
+                                             src="img/github.png"> </a>
+
+                              </li>
+                              <li>
+                                   Aranzazu Rodriguez Cabanillas: cursa GPS y ASEE.
+                                   <a href="https://github.com/ArantxaRodriguez">
+                                        <img class="imagen2" alt="Icono de Github"
+                                             src="img/github.png"> </a>
+
+                              </li>
+                              <li>
+                                   Adrián Sánchez Sánchez: cursa GPS.
+                                   <a href="https://github.com/Adrianss67">
+                                        <img class="imagen2" alt="Icono de Github"
+                                             src="img/github.png"> </a>
+                              </li>
+                         </ul>
+                    </div>
+               </div>
+
+              <div class="content-wrapper" id="contact">
+                    <!-- Custom form, important note: you will need additional code in order to make this form work -->
+                    <form class="contact-form astonish" action="#" method="post" data-animation="fadeInLeft">
+                         <h2 class="section-title">Contactanos</h2>
+                         <div class="grid">
+                              <div class="grid-col-sm-12 grid-col-md-6">
+                                   <div class="form-group">
+                                        <input type="text" id="firstName" name="firstName" required>
+                                        <label for="firstName">Nombre:</label>
+                                   </div>
+                              </div>
+                              <div class="grid-col-sm-12 grid-col-md-6">
+                                   <div class="form-group">
+                                         <input type="text" id="LastName" name="LastName" required>
+                                         <label for="LastName">Apellidos:</label>
+                                   </div>
+                              </div>
+                              <div class="grid-col-sm-12">
+                                   <div class="form-group">
+                                        <input type="text" id="email" name="email" required>
+                                        <label for="email">Email:</label>
+                                   </div>
+                              </div>
+                              <div class="grid-col-sm-12">
+                                   <div class="form-group">
+                                        <textarea id="message" name="message" required></textarea>
+                                        <label for="message">Mensaje:</label>
+                                   </div>
+                              </div>
+                         </div>
+                         <input class="btn btn-outline-teal" type="submit" value="Enviar">
+                    </form>
+               </div>
+               <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d81584.50435706123!2d-6.4257387!3d39.4716313!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1514142608486" style="border:0" allowfullscreen></iframe>
+          </main>
+          <!-- Main footer -->
+          <footer>
+               <div class="content-wrapper-sm display-flex-between">
+                    <!-- Easily replaceble copyright information -->
+                    <small>Your copyright 2022.</small>
+
+                    <!-- Make sure to edit the links so that they go to your social media. -->
+                    <div class="social-links">
+                         <ul>
+                              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-snapchat-square" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                         </ul>
+                    </div>
+               </div>
+          </footer>
+
+          <!-- Scripts placed at the bottom for faster loading -->
+          <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+          <script src="js/menu.js"></script>
+
+          <!-- Optional js files -->
+          <!-- Quick note: if you remove astonish, make sure you remove the embedded styles in the top -->
+          <script src="js/astonish.js"></script>
+          <script src="js/nav.js"></script>
+          <script src="js/scroll.js"></script>
+     </body>
 </html>
