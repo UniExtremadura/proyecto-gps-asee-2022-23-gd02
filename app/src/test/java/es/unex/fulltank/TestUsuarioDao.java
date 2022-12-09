@@ -1,18 +1,13 @@
 package es.unex.fulltank;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotEquals;
+import static org.mockito.Mockito.when;
 
-import android.content.Context;
-
-import androidx.room.Room;
-import androidx.test.core.app.ApplicationProvider;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import es.unex.fulltank.bd.elembd.Usuario;
 import es.unex.fulltank.bd.roomdb.BD;
@@ -23,41 +18,29 @@ import es.unex.fulltank.bd.roomdb.UsuarioDao;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-@RunWith(AndroidJUnit4.class)
+@RunWith(MockitoJUnitRunner.class)
 public class TestUsuarioDao {
     private BD volatileBD;
     private UsuarioDao usuarioDao;
+    @Mock
+    UsuarioDao usuarioMock;
 
-    @Before
-    public void crearVolatileBD() {
-        Context context = ApplicationProvider.getApplicationContext();
-        volatileBD = Room.inMemoryDatabaseBuilder(context, BD.class).allowMainThreadQueries().build();
-
-        usuarioDao = volatileBD.getUsuarioDao();
-    }
-
-    @Test
-    public void comprobarDao() {
-        assertNotNull(usuarioDao);
-    }
 
     @Test
     public void registroUsuario() {
-        usuarioDao = volatileBD.getUsuarioDao();
-        Usuario u = new Usuario("unex", "unex@alumnos.unex.es", "12345");
-        usuarioDao.insert(u);
+        Usuario usuario = new Usuario("unex", "unex@alumnos.unex.es", "12345");
+        usuario.setUid(28);
 
-        Usuario usuarioInsertado = usuarioDao.getByLogin("unex", "12345");
+        when(usuarioMock.getByLogin("unex", "12345")).thenReturn(usuario);
 
-        assertNotNull(usuarioInsertado);
-        assertEquals(usuarioInsertado.getUsuario(), u.getUsuario());
-        assertEquals(usuarioDao.getByUsuario("unex").getUid(), 1);
-        assertEquals(usuarioInsertado.getContra(), u.getContra());
-        assertEquals(usuarioInsertado.getCorreo(), u.getCorreo());
+        assertNotEquals(usuarioMock.getByLogin("unex", "12345"), null);
+
+        assertEquals(usuarioMock.getByLogin("unex", "12345").getUsuario(), "unex");
+        assertEquals(usuarioMock.getByLogin("unex", "12345").getUid(), 28);
+        assertEquals(usuarioMock.getByLogin("unex", "12345").getContra(), "12345");
+        assertEquals(usuarioMock.getByLogin("unex", "12345").getCorreo(), "unex@alumnos.unex.es");
+
     }
 
-    @After
-    public void cerrarVolatileBD() {
-        volatileBD.close();
-    }
+
 }
