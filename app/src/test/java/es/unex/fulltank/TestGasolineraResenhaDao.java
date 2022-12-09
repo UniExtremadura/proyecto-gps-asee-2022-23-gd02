@@ -1,6 +1,7 @@
 package es.unex.fulltank;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import android.content.Context;
 
@@ -52,15 +53,19 @@ public class TestGasolineraResenhaDao {
     public void addUsuario() {
         Usuario user = new Usuario("user", "correoUser", "12345");
         usuarioDao.insert(user);
+        Usuario u = new Usuario("unex", "unex@alumnos.unex.es", "12345");
+        usuarioDao.insert(u);
     }
 
     public void addGasolinera() {
         Gasolinera gasolinera = new Gasolinera(1.1, 1.1, 6228, "C/Leon Leal", "12 am",
                 "Hornachos", "Hornachos", "Badajoz", "CEPSA");
         gasolineraDao.insert(gasolinera);
+        Gasolinera g = new Gasolinera(2.8, 1.0, 10003, "san blas", "10:00-13:00", "Cáceres", "Cáceres", "Cáceres", "CEPSA");
+        gasolineraDao.insert(g);
     }
 
-    public void addGasolineraResenha() {
+    public void addGasolinerasResenhas() {
         GasolineraResenha g1 = new GasolineraResenha("12/10/2019", 1.1, 1.1, usuarioDao.getByUsuario("user").getUid(), "comentario 1");
         gasolineraResenhaDao.insert(g1);
 
@@ -77,10 +82,31 @@ public class TestGasolineraResenhaDao {
 
 
     @Test
+    public void addGasolineraResenha() {
+        gasolineraResenhaDao = volatileBD.getGasolineraResenhaDao();
+
+        addGasolinera();
+        addUsuario();
+
+        GasolineraResenha gr = new GasolineraResenha("10/10/2010", 2.8, 1.0, usuarioDao.getByUsuario("unex").getUid(), "good");
+        gasolineraResenhaDao.insert(gr);
+
+        GasolineraResenha grInsertado = gasolineraResenhaDao.getByPrimaryKey(2.8, 1.0, "10/10/2010");
+
+        assertNotNull(grInsertado);
+        assertEquals(grInsertado.getFecha(), gr.getFecha());
+        assertEquals(grInsertado.getLatitud(), gr.getLatitud(), 0.001);
+        assertEquals(grInsertado.getLongitud(), gr.getLongitud(), 0.001);
+        assertEquals(grInsertado.getUid(), gr.getUid());
+        assertEquals(grInsertado.getComentario(), gr.getComentario());
+    }
+
+
+    @Test
     public void getByCoords() {
         addUsuario();
         addGasolinera();
-        addGasolineraResenha();
+        addGasolinerasResenhas();
 
         List<GasolineraResenha> lGasolineraResenha = gasolineraResenhaDao.getByCoords(1.1, 1.1);
         assertEquals(lGasolineraResenha.size(), 2);
