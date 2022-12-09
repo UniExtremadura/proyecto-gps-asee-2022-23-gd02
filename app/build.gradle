@@ -86,7 +86,16 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-core:2.9.7'
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.7'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.7'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.0'
+
+    //Dependencias pagina web
+    testImplementation 'io.cucumber:cucumber-java:5.6.0'
+    testImplementation 'io.cucumber:cucumber-junit:5.6.0'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    testImplementation 'org.seleniumhq.selenium:selenium-chrome-driver:3.141.59'
+    testImplementation 'commons-io:commons-io:2.6'
+    testImplementation 'org.apache.commons:commons-lang3:3.11'
+    testImplementation 'org.apache.commons:commons-collections4:4.4'
+    testImplementation 'org.apache.commons:commons-math3:3.6.1'
 
 }
-
-
