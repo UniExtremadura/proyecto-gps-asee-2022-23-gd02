@@ -3,6 +3,7 @@ plugins {
     id 'com.android.application' version '7.3.0' apply false
     id 'com.android.library' version '7.3.0' apply false
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1' apply false
+    id "org.sonarqube" version "3.5.0.2730"
 }
 
 ext {
@@ -10,4 +11,12 @@ ext {
 
     roomVersion = '2.4.3'
     lifecycleVersion = '2.2.0'
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectKey", "UniExtremadura_proyecto-gps-asee-2022-23-gd02"
+    property "sonar.organization", "uniextremadura"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
 }
