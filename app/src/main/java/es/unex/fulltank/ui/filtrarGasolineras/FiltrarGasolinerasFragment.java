@@ -83,7 +83,7 @@ public class FiltrarGasolinerasFragment extends Fragment implements GasolinerasA
                 opcion = EnumCombustible.getIdCombustible(c);
 
                 AppExecutors.getInstance().mainThread().execute(() -> {
-                    if (lGasolinerasInfo.size() > 0) {
+                    if (!lGasolinerasInfo.isEmpty()) {
                         lGasolinerasInfo.clear();
                     }
 
