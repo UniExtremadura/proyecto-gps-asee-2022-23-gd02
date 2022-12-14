@@ -37,7 +37,8 @@ import es.unex.fulltank.bd.elembd.GasolineraFavorita;
 
 
 public class GasolineraDetalleActivity extends AppCompatActivity {
-    private double latitud, longitud;
+    private double latitud;
+    private double longitud;
     private String rotulo, calle, municipio;
 
     private InfoGasolineraFragment fragment;
