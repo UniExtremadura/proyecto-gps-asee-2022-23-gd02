@@ -42,9 +42,7 @@ public class InicioSesion extends AppCompatActivity {
                     Intent i = new Intent(InicioSesion.this, MainActivity.class);
                     i.putExtra("IDENTIFICADOR", u.getUid());
                     startActivity(i);
-                } else {
                 }
-                //incorrect
             });
         });
 
