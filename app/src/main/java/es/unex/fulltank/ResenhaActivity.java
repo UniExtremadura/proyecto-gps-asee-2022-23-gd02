@@ -63,9 +63,7 @@ public class ResenhaActivity extends AppCompatActivity {
         GasolineraResenha gr = new GasolineraResenha(fecha, latitud, longitud, identificador, resenha);
         AppExecutors.getInstance().diskIO().execute(() -> {
             instanceBD.getGasolineraResenhaDao().insert(gr);
-            AppExecutors.getInstance().mainThread().execute(() -> {
-                cargarResenhaFragment();
-            });
+            AppExecutors.getInstance().mainThread().execute(this::cargarResenhaFragment);
         });
     }
 
