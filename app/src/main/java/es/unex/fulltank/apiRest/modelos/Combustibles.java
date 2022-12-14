@@ -2,8 +2,6 @@ package es.unex.fulltank.apiRest.modelos;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-
 /**
  * Clase que define la estructura de un objeto Combustibles
  * @author Grupo PGD02
