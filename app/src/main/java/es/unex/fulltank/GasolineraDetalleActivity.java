@@ -34,7 +34,6 @@ import es.unex.fulltank.bd.roomdb.BD;
 import es.unex.fulltank.ui.gasolineras.InfoGasolineraFragment;
 
 import es.unex.fulltank.bd.elembd.GasolineraFavorita;
-import es.unex.fulltank.bd.roomdb.BD;
 
 
 public class GasolineraDetalleActivity extends AppCompatActivity {
