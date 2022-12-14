@@ -105,7 +105,7 @@ public class TestFiltrarGasolinerasDao {
         assertEquals(lcombustibleGasolineras.get(1).getPrecio(), 1.29, 0.001);
 
         assertEquals(lcombustibleGasolineras.get(2).getLatitud(), 2.2, 0.001);
-        assertEquals(lcombustibleGasolineras.get(2).getLongitud(), 2.2, 0.001);
+        assertEquals(2.2, lcombustibleGasolineras.get(2).getLongitud(), 0.001);
         assertEquals(lcombustibleGasolineras.get(2).getCid(), 2);
         assertEquals(lcombustibleGasolineras.get(2).getPrecio(), 1.98, 0.001);
     }
