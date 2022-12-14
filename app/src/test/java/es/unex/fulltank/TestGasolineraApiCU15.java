@@ -131,7 +131,7 @@ public class TestGasolineraApiCU15 {
         ArrayList<Gasolinera> listaRespuesta = respuesta.getListaGasolineras();
         assertNotNull(listaRespuesta);
         assertFalse(listaRespuesta.isEmpty());
-        assertTrue(listaRespuesta.size() == 2);
+        assertEquals(2, listaRespuesta.size());
         //IMPORTANT: We need to have implemented "equals" in Center class to perform this assert
         assertEquals(g0.getLatitud(), listaRespuesta.get(0).getLatitud());
         assertEquals(g0.getLatitud(), listaRespuesta.get(0).getLongitud());
