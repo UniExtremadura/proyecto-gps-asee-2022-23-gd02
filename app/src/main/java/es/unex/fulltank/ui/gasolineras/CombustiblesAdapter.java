@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import es.unex.fulltank.R;
-import es.unex.fulltank.bd.elembd.CombustibleGasolinera;
-import es.unex.fulltank.bd.elembd.TipoCombustible;
+import es.unex.fulltank.datos.modelo.CombustibleGasolinera;
+import es.unex.fulltank.datos.modelo.TipoCombustible;
 
 public class CombustiblesAdapter extends RecyclerView.Adapter<CombustiblesAdapter.ViewHolderCombustible> {
 

@@ -9,18 +9,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import es.unex.fulltank.R;
-import es.unex.fulltank.bd.elembd.Gasolinera;
+import es.unex.fulltank.datos.modelo.Gasolinera;
 
 public class GasolinerasAdapter extends RecyclerView.Adapter<GasolinerasAdapter.ViewHolderGasolineras> {
 
     private static RecyclerViewClickListener itemListener;
     private final Context context;
-    ArrayList<Gasolinera> lGasolineras;
+    private List<Gasolinera> lGasolineras;
 
-    public GasolinerasAdapter(ArrayList<Gasolinera> lGasolineras, RecyclerViewClickListener itemListener,
+    public GasolinerasAdapter(List<Gasolinera> lGasolineras, RecyclerViewClickListener itemListener,
                               Context context) {
         this.lGasolineras = lGasolineras;
         GasolinerasAdapter.itemListener = itemListener;

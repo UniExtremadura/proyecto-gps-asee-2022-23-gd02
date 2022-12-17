@@ -9,21 +9,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import es.unex.fulltank.AppExecutors;
 import es.unex.fulltank.R;
-import es.unex.fulltank.bd.elembd.GasolineraResenha;
-import es.unex.fulltank.bd.elembd.Usuario;
-import es.unex.fulltank.bd.roomdb.BD;
-import es.unex.fulltank.bd.roomdb.UsuarioDao;
+import es.unex.fulltank.datos.modelo.GasolineraResenha;
+import es.unex.fulltank.datos.modelo.Usuario;
+import es.unex.fulltank.datos.roomdb.BD;
+import es.unex.fulltank.datos.roomdb.UsuarioDao;
 
 public class ResenhaAdapter extends RecyclerView.Adapter<ResenhaAdapter.ViewHolderResenha> {
 
     private final Context context;
-    ArrayList<GasolineraResenha> lResenha;
+    private List<GasolineraResenha> lResenha;
 
-    public ResenhaAdapter(ArrayList<GasolineraResenha> lResenha, Context context) {
+    public ResenhaAdapter(List<GasolineraResenha> lResenha, Context context) {
         this.lResenha = lResenha;
         this.context = context;
     }
@@ -49,8 +49,8 @@ public class ResenhaAdapter extends RecyclerView.Adapter<ResenhaAdapter.ViewHold
 
     public class ViewHolderResenha extends RecyclerView.ViewHolder {
 
-        private final TextView usuario;
-        private final TextView comentario;
+        public TextView usuario;
+        public TextView comentario;
 
         public ViewHolderResenha(@NonNull View itemView) {
             super(itemView);
@@ -69,5 +69,15 @@ public class ResenhaAdapter extends RecyclerView.Adapter<ResenhaAdapter.ViewHold
             });
             comentario.setText(r.getComentario());
         }
+    }
+
+    public void swap(List<GasolineraResenha> dataset) {
+        lResenha = dataset;
+        notifyDataSetChanged();
+    }
+
+    public void clear() {
+        lResenha.clear();
+        notifyDataSetChanged();
     }
 }

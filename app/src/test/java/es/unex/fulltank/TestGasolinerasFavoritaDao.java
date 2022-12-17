@@ -16,13 +16,13 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
-import es.unex.fulltank.bd.elembd.Gasolinera;
-import es.unex.fulltank.bd.elembd.GasolineraFavorita;
-import es.unex.fulltank.bd.elembd.Usuario;
-import es.unex.fulltank.bd.roomdb.BD;
-import es.unex.fulltank.bd.roomdb.GasolineraDao;
-import es.unex.fulltank.bd.roomdb.GasolineraFavoritaDao;
-import es.unex.fulltank.bd.roomdb.UsuarioDao;
+import es.unex.fulltank.datos.modelo.Gasolinera;
+import es.unex.fulltank.datos.modelo.GasolineraFavorita;
+import es.unex.fulltank.datos.modelo.Usuario;
+import es.unex.fulltank.datos.roomdb.BD;
+import es.unex.fulltank.datos.roomdb.GasolineraDao;
+import es.unex.fulltank.datos.roomdb.GasolineraFavoritaDao;
+import es.unex.fulltank.datos.roomdb.UsuarioDao;
 
 @RunWith(AndroidJUnit4.class)
 public class TestGasolinerasFavoritaDao {

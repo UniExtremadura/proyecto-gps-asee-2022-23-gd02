@@ -27,6 +27,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import es.unex.fulltank.ui.InicioSesion;
+
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class TestInicioSesion {

@@ -9,9 +9,9 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import es.unex.fulltank.bd.elembd.Usuario;
-import es.unex.fulltank.bd.roomdb.BD;
-import es.unex.fulltank.bd.roomdb.UsuarioDao;
+import es.unex.fulltank.datos.modelo.Usuario;
+import es.unex.fulltank.datos.roomdb.BD;
+import es.unex.fulltank.datos.roomdb.UsuarioDao;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -31,14 +31,14 @@ public class TestUsuarioDao {
         Usuario usuario = new Usuario("unex", "unex@alumnos.unex.es", "12345");
         usuario.setUid(28);
 
-        when(usuarioMock.getByLogin("unex", "12345")).thenReturn(usuario);
+        when(usuarioMock.getByLoginTest("unex", "12345")).thenReturn(usuario);
 
-        assertNotEquals(usuarioMock.getByLogin("unex", "12345"), null);
+        assertNotEquals(usuarioMock.getByLoginTest("unex", "12345"), null);
 
-        assertEquals(usuarioMock.getByLogin("unex", "12345").getUsuario(), "unex");
-        assertEquals(usuarioMock.getByLogin("unex", "12345").getUid(), 28);
-        assertEquals(usuarioMock.getByLogin("unex", "12345").getContra(), "12345");
-        assertEquals(usuarioMock.getByLogin("unex", "12345").getCorreo(), "unex@alumnos.unex.es");
+        assertEquals(usuarioMock.getByLoginTest("unex", "12345").getUsuario(), "unex");
+        assertEquals(usuarioMock.getByLoginTest("unex", "12345").getUid(), 28);
+        assertEquals(usuarioMock.getByLoginTest("unex", "12345").getContra(), "12345");
+        assertEquals(usuarioMock.getByLoginTest("unex", "12345").getCorreo(), "unex@alumnos.unex.es");
 
     }
 

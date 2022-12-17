@@ -16,9 +16,9 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
-import es.unex.fulltank.bd.elembd.Gasolinera;
-import es.unex.fulltank.bd.roomdb.BD;
-import es.unex.fulltank.bd.roomdb.GasolineraDao;
+import es.unex.fulltank.datos.modelo.Gasolinera;
+import es.unex.fulltank.datos.roomdb.BD;
+import es.unex.fulltank.datos.roomdb.GasolineraDao;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -52,7 +52,7 @@ public class TestGasolineraDaoCU15 {
                 "localidad", "municipio", "provincia", "Repsol");
         dao_to_test.insert(g0);
         dao_to_test.insert(g1);
-        List<Gasolinera> result = dao_to_test.getAll();
+        List<Gasolinera> result = dao_to_test.getAllTest();
         assertEquals(2, result.size());
 
         assertEquals(g0.getLatitud(), result.get(0).getLatitud(), 0.0001); //Precision loss
@@ -88,7 +88,7 @@ public class TestGasolineraDaoCU15 {
         dao_to_test.insert(g0);
         dao_to_test.insert(g1);
         dao_to_test.insert(g2);
-        List<Gasolinera> result = dao_to_test.getAll();
+        List<Gasolinera> result = dao_to_test.getAllTest();
         assertEquals(2, result.size());
 
         //G2 deberia haber reemplazado a g1

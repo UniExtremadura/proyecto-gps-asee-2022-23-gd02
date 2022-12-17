@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import es.unex.fulltank.bd.elembd.Gasolinera;
+import es.unex.fulltank.datos.modelo.Gasolinera;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

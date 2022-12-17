@@ -14,9 +14,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import es.unex.fulltank.bd.elembd.Gasolinera;
-import es.unex.fulltank.bd.roomdb.BD;
-import es.unex.fulltank.bd.roomdb.GasolineraDao;
+import es.unex.fulltank.datos.modelo.Gasolinera;
+import es.unex.fulltank.datos.roomdb.BD;
+import es.unex.fulltank.datos.roomdb.GasolineraDao;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

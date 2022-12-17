@@ -12,9 +12,9 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.maps.SupportMapFragment;
 
-import es.unex.fulltank.MainActivity;
 import es.unex.fulltank.R;
 import es.unex.fulltank.databinding.FragmentFavoritosBinding;
+import es.unex.fulltank.ui.MainActivity;
 
 public class SettingsFragment extends Fragment {
 

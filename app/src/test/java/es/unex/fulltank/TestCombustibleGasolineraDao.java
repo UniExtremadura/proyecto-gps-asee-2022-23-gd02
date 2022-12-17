@@ -16,13 +16,13 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
-import es.unex.fulltank.bd.elembd.CombustibleGasolinera;
-import es.unex.fulltank.bd.elembd.Gasolinera;
-import es.unex.fulltank.bd.elembd.TipoCombustible;
-import es.unex.fulltank.bd.roomdb.BD;
-import es.unex.fulltank.bd.roomdb.CombustibleGasolineraDao;
-import es.unex.fulltank.bd.roomdb.GasolineraDao;
-import es.unex.fulltank.bd.roomdb.TipoCombustibleDao;
+import es.unex.fulltank.datos.modelo.CombustibleGasolinera;
+import es.unex.fulltank.datos.modelo.Gasolinera;
+import es.unex.fulltank.datos.modelo.TipoCombustible;
+import es.unex.fulltank.datos.roomdb.BD;
+import es.unex.fulltank.datos.roomdb.CombustibleGasolineraDao;
+import es.unex.fulltank.datos.roomdb.GasolineraDao;
+import es.unex.fulltank.datos.roomdb.TipoCombustibleDao;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -77,7 +77,7 @@ public class TestCombustibleGasolineraDao {
     @Test
     public void testGetByCoords() {
 
-        List<CombustibleGasolinera> lComb = dao_to_test.getByCoords(1.1, 1.1);
+        List<CombustibleGasolinera> lComb = dao_to_test.getByCoordsTest(1.1, 1.1);
         assertEquals(2, lComb.size());
 
         assertEquals(12, lComb.get(0).getCid());

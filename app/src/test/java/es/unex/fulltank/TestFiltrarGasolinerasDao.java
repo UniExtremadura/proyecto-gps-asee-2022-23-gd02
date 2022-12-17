@@ -16,13 +16,13 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
-import es.unex.fulltank.bd.elembd.CombustibleGasolinera;
-import es.unex.fulltank.bd.elembd.Gasolinera;
-import es.unex.fulltank.bd.elembd.TipoCombustible;
-import es.unex.fulltank.bd.roomdb.BD;
-import es.unex.fulltank.bd.roomdb.CombustibleGasolineraDao;
-import es.unex.fulltank.bd.roomdb.GasolineraDao;
-import es.unex.fulltank.bd.roomdb.TipoCombustibleDao;
+import es.unex.fulltank.datos.modelo.CombustibleGasolinera;
+import es.unex.fulltank.datos.modelo.Gasolinera;
+import es.unex.fulltank.datos.modelo.TipoCombustible;
+import es.unex.fulltank.datos.roomdb.BD;
+import es.unex.fulltank.datos.roomdb.CombustibleGasolineraDao;
+import es.unex.fulltank.datos.roomdb.GasolineraDao;
+import es.unex.fulltank.datos.roomdb.TipoCombustibleDao;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -91,7 +91,7 @@ public class TestFiltrarGasolinerasDao {
         addTipoCombustible();
         addCombustibleGasolinera();
 
-        List<CombustibleGasolinera> lcombustibleGasolineras = combustibleGasolineraDao.getAll();
+        List<CombustibleGasolinera> lcombustibleGasolineras = combustibleGasolineraDao.getAllTest();
         assertEquals(lcombustibleGasolineras.size(), 3);
 
         assertEquals(lcombustibleGasolineras.get(0).getLatitud(), 1.1, 0.001);

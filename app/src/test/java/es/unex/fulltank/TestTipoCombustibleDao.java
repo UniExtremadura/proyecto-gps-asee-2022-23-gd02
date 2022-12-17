@@ -16,9 +16,9 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
-import es.unex.fulltank.bd.elembd.TipoCombustible;
-import es.unex.fulltank.bd.roomdb.BD;
-import es.unex.fulltank.bd.roomdb.TipoCombustibleDao;
+import es.unex.fulltank.datos.modelo.TipoCombustible;
+import es.unex.fulltank.datos.roomdb.BD;
+import es.unex.fulltank.datos.roomdb.TipoCombustibleDao;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

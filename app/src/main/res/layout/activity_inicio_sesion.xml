@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".InicioSesion">
+    tools:context=".ui.InicioSesion">
 
     <TextView
         android:id="@+id/signin"
@@ -82,6 +82,34 @@
         android:backgroundTint="@color/design_default_color_secondary"
         android:onClick="registrarse"
         android:text="REGÍSTRATE" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/registybtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="102dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/design_default_color_secondary"
+        android:onClick="registrarse"
+        android:text="REGÍSTRATE" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/saltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="208dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/design_default_color_secondary"
+        android:onClick="saltar"
+        android:text="SALTAR INICIO DE SESION" />
 
 
 </RelativeLayout>

@@ -9,22 +9,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import es.unex.fulltank.AppExecutors;
 import es.unex.fulltank.R;
-import es.unex.fulltank.bd.elembd.Gasolinera;
-import es.unex.fulltank.bd.elembd.HistorialRepostaje;
-import es.unex.fulltank.bd.roomdb.BD;
+import es.unex.fulltank.datos.modelo.Gasolinera;
+import es.unex.fulltank.datos.modelo.HistorialRepostaje;
+import es.unex.fulltank.datos.roomdb.BD;
 
 public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.ViewHolderHistorico> {
 
 
     private final Context context;
-    private ArrayList<HistorialRepostaje> lHistorial;
+    private List<HistorialRepostaje> lHistorial;
 
 
-    public HistoricoAdapter(ArrayList<HistorialRepostaje> lHistorial, Context context) {
+    public HistoricoAdapter(List<HistorialRepostaje> lHistorial, Context context) {
         this.lHistorial = lHistorial;
         this.context = context;
     }

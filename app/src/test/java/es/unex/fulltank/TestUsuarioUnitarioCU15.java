@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import es.unex.fulltank.bd.elembd.Usuario;
+import es.unex.fulltank.datos.modelo.Usuario;
 
 public class TestUsuarioUnitarioCU15 {
 

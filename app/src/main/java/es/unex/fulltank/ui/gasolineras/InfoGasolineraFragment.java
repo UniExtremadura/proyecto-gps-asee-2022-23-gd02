@@ -1,7 +1,6 @@
 package es.unex.fulltank.ui.gasolineras;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +15,8 @@ import java.util.List;
 
 import es.unex.fulltank.R;
 import es.unex.fulltank.SimpleDividerItemDecoration;
-import es.unex.fulltank.bd.elembd.CombustibleGasolinera;
-import es.unex.fulltank.bd.elembd.TipoCombustible;
+import es.unex.fulltank.datos.modelo.CombustibleGasolinera;
+import es.unex.fulltank.datos.modelo.TipoCombustible;
 
 
 /**
@@ -33,7 +32,6 @@ public class InfoGasolineraFragment extends Fragment {
     private static final String MUNICIPIO = "municipio";
     private static final String LISTA_TIPO = "lTipoComb";
     private static final String LISTA_COMB = "lComb";
-    private RecyclerView recycler;
 
     private String rotulo;
     private String calle;
@@ -67,37 +65,32 @@ public class InfoGasolineraFragment extends Fragment {
             rotulo = getArguments().getString(ROTULO);
             calle = getArguments().getString(CALLE);
             municipio = getArguments().getString(MUNICIPIO);
+
+            //Llamada al  ViewModel.
             lTipoComb = (ArrayList<TipoCombustible>) getArguments().getSerializable(LISTA_TIPO);
             lComb = (ArrayList<CombustibleGasolinera>) getArguments().getSerializable(LISTA_COMB);
         }
     }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_info_gasolinera, container, false);
 
         TextView rotuloTV = v.findViewById(R.id.rotulo_tv);
         TextView calleTV = v.findViewById(R.id.calle_tv);
         TextView municipioTV = v.findViewById(R.id.municipio_tv);
 
-        mostrarCombustibles();
 
         rotuloTV.setText(rotulo);
         calleTV.setText(calle);
         municipioTV.setText(municipio);
 
-        recycler = v.findViewById(R.id.recycler_detalle_gasolinera);
-        recycler.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(),
-                LinearLayoutManager.VERTICAL, false));
+        RecyclerView recycler = v.findViewById(R.id.recycler_detalle_gasolinera);
+        recycler.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         recycler.addItemDecoration(new SimpleDividerItemDecoration(getActivity().getApplicationContext()));
         recycler.setAdapter(new CombustiblesAdapter(lTipoComb, lComb, getActivity().getApplicationContext()));
 
         return v;
     }
 
-    private void mostrarCombustibles() {
-        for (int i = 0; i < lComb.size(); i++) {
-            Log.d("Precio combustible: ", "" + lComb.get(i).getPrecio());
-        }
-    }
+
 }

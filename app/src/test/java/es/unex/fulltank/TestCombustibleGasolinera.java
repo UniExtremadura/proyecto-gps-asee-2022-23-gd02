@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import es.unex.fulltank.bd.elembd.CombustibleGasolinera;
+import es.unex.fulltank.datos.modelo.CombustibleGasolinera;
 
 public class TestCombustibleGasolinera {
     private CombustibleGasolinera tipo;

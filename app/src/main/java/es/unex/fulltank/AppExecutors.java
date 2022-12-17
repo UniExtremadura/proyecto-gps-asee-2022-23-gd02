@@ -26,6 +26,7 @@ import java.util.concurrent.Executors;
 
 /**
  * La idea de esta clase es abstraer el funcionamiento de los hilos en Java.
+ *
  * @author Grupo PGD02.
  * @version 1.0
  */
@@ -40,6 +41,7 @@ public class AppExecutors {
 
     /**
      * Inicializa los hilos de disco que vienen dados por parámetro.
+     *
      * @param diskIO
      * @param networkIO
      * @param mainThread
@@ -52,14 +54,13 @@ public class AppExecutors {
 
     /**
      * Esta clase implementa el patrón singleton
+     *
      * @return la instancia de esta clase
      */
     public static AppExecutors getInstance() {
         if (sInstance == null) {
             synchronized (LOCK) {
-                sInstance = new AppExecutors(Executors.newSingleThreadExecutor(),
-                        Executors.newFixedThreadPool(3),
-                        new MainThreadExecutor());
+                sInstance = new AppExecutors(Executors.newSingleThreadExecutor(), Executors.newFixedThreadPool(3), new MainThreadExecutor());
             }
         }
         return sInstance;

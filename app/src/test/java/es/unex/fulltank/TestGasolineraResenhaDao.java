@@ -17,13 +17,13 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
-import es.unex.fulltank.bd.elembd.Gasolinera;
-import es.unex.fulltank.bd.elembd.GasolineraResenha;
-import es.unex.fulltank.bd.elembd.Usuario;
-import es.unex.fulltank.bd.roomdb.BD;
-import es.unex.fulltank.bd.roomdb.GasolineraDao;
-import es.unex.fulltank.bd.roomdb.GasolineraResenhaDao;
-import es.unex.fulltank.bd.roomdb.UsuarioDao;
+import es.unex.fulltank.datos.modelo.Gasolinera;
+import es.unex.fulltank.datos.modelo.GasolineraResenha;
+import es.unex.fulltank.datos.modelo.Usuario;
+import es.unex.fulltank.datos.roomdb.BD;
+import es.unex.fulltank.datos.roomdb.GasolineraDao;
+import es.unex.fulltank.datos.roomdb.GasolineraResenhaDao;
+import es.unex.fulltank.datos.roomdb.UsuarioDao;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -108,7 +108,7 @@ public class TestGasolineraResenhaDao {
         addGasolinera();
         addGasolinerasResenhas();
 
-        List<GasolineraResenha> lGasolineraResenha = gasolineraResenhaDao.getByCoords(1.1, 1.1);
+        List<GasolineraResenha> lGasolineraResenha = gasolineraResenhaDao.getByCoordsTest(1.1, 1.1);
         assertEquals(lGasolineraResenha.size(), 2);
         assertEquals(lGasolineraResenha.get(0).getFecha(), "12/10/2019");
         assertEquals(lGasolineraResenha.get(0).getLatitud(), 1.1, 0.001);

@@ -1,12 +1,7 @@
 package es.unex.fulltank;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import android.content.Context;
 
@@ -14,14 +9,18 @@ import androidx.room.Room;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
-import es.unex.fulltank.bd.elembd.Gasolinera;
-import es.unex.fulltank.bd.elembd.HistorialRepostaje;
-import es.unex.fulltank.bd.elembd.Usuario;
-import es.unex.fulltank.bd.roomdb.BD;
-import es.unex.fulltank.bd.roomdb.GasolineraDao;
-import es.unex.fulltank.bd.roomdb.HistorialRepostajeDao;
-import es.unex.fulltank.bd.roomdb.UsuarioDao;
+import es.unex.fulltank.datos.modelo.Gasolinera;
+import es.unex.fulltank.datos.modelo.HistorialRepostaje;
+import es.unex.fulltank.datos.modelo.Usuario;
+import es.unex.fulltank.datos.roomdb.BD;
+import es.unex.fulltank.datos.roomdb.GasolineraDao;
+import es.unex.fulltank.datos.roomdb.HistorialRepostajeDao;
+import es.unex.fulltank.datos.roomdb.UsuarioDao;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -36,9 +35,9 @@ public class TestHistorialRepostajeDao {
     private GasolineraDao gasolineraDao;
 
     @Before
-    public void crearVolatileBD(){
+    public void crearVolatileBD() {
         Context context = ApplicationProvider.getApplicationContext();
-        volatileBD = Room.inMemoryDatabaseBuilder(context,BD.class).allowMainThreadQueries().build();
+        volatileBD = Room.inMemoryDatabaseBuilder(context, BD.class).allowMainThreadQueries().build();
 
         historialRepostajeDao = volatileBD.getHistorialRepostajeDao();
         usuarioDao = volatileBD.getUsuarioDao();
@@ -47,7 +46,7 @@ public class TestHistorialRepostajeDao {
 
     //PRUEBA DE OBTENCIÓN DE DAO
     @Test
-    public void comprobarDao(){
+    public void comprobarDao() {
         assertNotNull(historialRepostajeDao);
         assertNotNull(usuarioDao);
         assertNotNull(gasolineraDao);
@@ -59,34 +58,34 @@ public class TestHistorialRepostajeDao {
         addGasolinera();
         addUsuario();
 
-        HistorialRepostaje hr = new HistorialRepostaje("10/10/2010",2.8,1.0,usuarioDao.getByUsuario("unex").getUid(),10,5);
+        HistorialRepostaje hr = new HistorialRepostaje("10/10/2010", 2.8, 1.0, usuarioDao.getByUsuario("unex").getUid(), 10, 5);
         historialRepostajeDao.insert(hr);
 
-        HistorialRepostaje hrInsertado = historialRepostajeDao.getByPrimaryKey(2.8,1.0,usuarioDao.getByUsuario("unex").getUid(),"10/10/2010");
+        HistorialRepostaje hrInsertado = historialRepostajeDao.getByPrimaryKey(2.8, 1.0, usuarioDao.getByUsuario("unex").getUid(), "10/10/2010");
 
         assertNotNull(hrInsertado);
-        assertEquals(hrInsertado.getFecha(),hr.getFecha());
-        assertEquals(hrInsertado.getUid(),hr.getUid());
-        assertEquals(hrInsertado.getLatitud(),hr.getLatitud(),0.001);
-        assertEquals(hrInsertado.getLongitud(),hr.getLongitud(),0.001);
-        assertEquals(hrInsertado.getLitros(),hr.getLitros(),0.001);
-        assertEquals(hrInsertado.getPrecio(),hr.getPrecio(),0.001);
+        assertEquals(hrInsertado.getFecha(), hr.getFecha());
+        assertEquals(hrInsertado.getUid(), hr.getUid());
+        assertEquals(hrInsertado.getLatitud(), hr.getLatitud(), 0.001);
+        assertEquals(hrInsertado.getLongitud(), hr.getLongitud(), 0.001);
+        assertEquals(hrInsertado.getLitros(), hr.getLitros(), 0.001);
+        assertEquals(hrInsertado.getPrecio(), hr.getPrecio(), 0.001);
     }
 
     //DATOS QUE YA DISPONDRÍA LA BD
-    public void addGasolinera (){
-        Gasolinera g = new Gasolinera(2.8,1.0,10003,"san blas","10:00-13:00","Cáceres","Cáceres","Cáceres","CEPSA");
+    public void addGasolinera() {
+        Gasolinera g = new Gasolinera(2.8, 1.0, 10003, "san blas", "10:00-13:00", "Cáceres", "Cáceres", "Cáceres", "CEPSA");
         gasolineraDao.insert(g);
     }
 
     //DATOS QUE YA DISPONDRÍA LA BD
-    public void addUsuario (){
-        Usuario u = new Usuario("unex","unex@alumnos.unex.es","12345");
+    public void addUsuario() {
+        Usuario u = new Usuario("unex", "unex@alumnos.unex.es", "12345");
         usuarioDao.insert(u);
     }
 
     @After
-    public void cerrarVolatileBD(){
+    public void cerrarVolatileBD() {
         volatileBD.close();
     }
 }
